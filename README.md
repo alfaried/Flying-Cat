@@ -5,7 +5,7 @@ Placeholder Application for Deployment Testing
 
 ```bash
 # Clone project
-git clone https://github.com/alfaried/Flying_Cat.git
+git clone https://github.com/alfaried/Flying-Cat.git
 
 # Install dependencies
 npm install
