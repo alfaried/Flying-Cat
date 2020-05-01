@@ -1,5 +1,5 @@
-# Flying_Cat
-Placeholder Application for Deployment Testing
+# Flying-Cat
+Placeholder Vue.js Application (Frontend) for Deployment Testing
 
 ## Build Setup
 
