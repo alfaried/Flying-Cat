@@ -1,21 +1,21 @@
 <template>
   <div class="profile-main">
-    <el-row>
+    <el-row style="margin-bottom: 20px;">
       <h1>Profile Management</h1>
       <el-divider content-position="left"><h2>{{ "View & Edit Account Information" }}</h2></el-divider>
     </el-row>
 
     <el-card>
       <el-form :model="profileForm" ref="profileForm" class="card-form" label-position="top">
-        <el-row>
-          <el-card shadow="hover">
+        <el-row style="margin-bottom: 20px;">
+          <el-card shadow="hover" class="inner-card">
             <div class="card-header" slot="header">
               <i class="el-icon-collection"></i>
               <span>Identification</span>
             </div>
 
             <div class="card-body">
-              <el-row :gutter="50">
+              <el-row :gutter="20">
                 <el-col :span="6">
                   <el-form-item label="Certificate ID">
                     <el-input v-model="profileForm.certificateID"/>
@@ -39,15 +39,15 @@
           </el-card>
         </el-row>
 
-        <el-row>
-          <el-card shadow="hover">
+        <el-row style="margin-bottom: 20px;">
+          <el-card shadow="hover" class="inner-card">
             <div class="card-header" slot="header">
               <i class="el-icon-tickets"></i>
               <span>Basic Information</span>
             </div>
 
             <div class="card-body">
-              <el-row :gutter="50">
+              <el-row :gutter="20">
                 <el-col :span="2">
                   <el-form-item label="Salutation">
                     <el-select v-model="profileForm.salutation">
@@ -70,7 +70,7 @@
                 </el-col>
               </el-row>
 
-              <el-row :gutter="50">
+              <el-row :gutter="20">
                 <el-col :span="6">
                   <el-form-item label="Tax Identifier">
                     <el-input v-model="profileForm.taxIdentifier"/>
@@ -78,7 +78,7 @@
                 </el-col>
                 <el-col :span="6">
                   <el-form-item label="Date of Birth">
-                    <el-date-picker type="date" placeholder="Pick a date" v-model="profileForm.dob" style="width: 100%;"/>
+                    <el-date-picker type="date" placeholder="Pick a date" v-model="profileForm.dob" style="width: 100%;" @change="show"/>
                   </el-form-item>
                 </el-col>
                 <el-col :span="6">
@@ -94,15 +94,15 @@
           </el-card>
         </el-row>
 
-        <el-row>
-          <el-card shadow="hover">
+        <el-row style="margin-bottom: 20px;">
+          <el-card shadow="hover" class="inner-card">
             <div class="card-header" slot="header">
               <i class="el-icon-wallet"></i>
               <span>Profile</span>
             </div>
 
             <div class="card-body">
-              <el-row :gutter="50">
+              <el-row :gutter="20">
                 <el-col :span="6">
                   <el-form-item label="Nationality">
                     <el-input v-model="profileForm.nationality"/>
@@ -115,7 +115,7 @@
                 </el-col>
                 <el-col :span="6">
                   <el-form-item label="Fax">
-                    <el-input v-model="profileForm.fax"/>
+                    <el-input v-model="profileForm.fax" placeholder="Optional"/>
                   </el-form-item>
                 </el-col>
                 <el-col :span="6">
@@ -130,15 +130,15 @@
                 </el-col>
               </el-row>
 
-              <el-row>
-                <el-card shadow="hover">
+              <el-row style="margin-bottom: 20px;">
+                <el-card shadow="hover" class="inner-card">
                   <div class="card-header" slot="header">
                     <i class="el-icon-school"></i>
                     <span>Address</span>
                   </div>
 
                   <div class="card-body">
-                    <el-row :gutter="50">
+                    <el-row :gutter="20">
                       <el-col :span="12">
                         <el-form-item label="Street Address 1">
                           <el-input v-model="profileForm.streetAddress1" type="textarea"/>
@@ -146,12 +146,12 @@
                       </el-col>
                       <el-col :span="12">
                         <el-form-item label="Street Address 2">
-                          <el-input v-model="profileForm.streetAddress2" type="textarea"/>
+                          <el-input v-model="profileForm.streetAddress2" type="textarea" placeholder="Optional"/>
                         </el-form-item>
                       </el-col>
                     </el-row>
 
-                    <el-row :gutter="50">
+                    <el-row :gutter="20">
                       <el-col :span="8">
                         <el-form-item label="Country">
                           <el-input v-model="profileForm.country"/>
@@ -169,7 +169,7 @@
                       </el-col>
                     </el-row>
 
-                    <el-row :gutter="50">
+                    <el-row :gutter="20">
                       <el-col :span="6">
                         <el-form-item label="Postal Code">
                           <el-input v-model="profileForm.postalCode"/>
@@ -181,14 +181,14 @@
               </el-row>
 
               <el-row>
-                <el-card shadow="hover">
+                <el-card shadow="hover" class="inner-card">
                   <div class="card-header" slot="header">
                     <i class="el-icon-mobile-phone"></i>
                     <span>Contact</span>
                   </div>
 
                   <div class="card-body">
-                    <el-row :gutter="50">
+                    <el-row :gutter="20">
                       <el-col :span="4">
                         <el-form-item label="Country Code">
                           <el-input v-model="profileForm.countryCodeMobile"/>
@@ -196,20 +196,20 @@
                       </el-col>
                       <el-col :span="8">
                         <el-form-item label="Mobile Number">
-                          <el-input v-model="profileForm.homeNumber"/>
+                          <el-input v-model="profileForm.mobileNumber"/>
                         </el-form-item>
                       </el-col>
                     </el-row>
 
-                    <el-row :gutter="50">
+                    <el-row :gutter="20">
                       <el-col :span="4">
                         <el-form-item label="Country Code">
-                          <el-input v-model="profileForm.countryCodeHome"/>
+                          <el-input v-model="profileForm.countryCodeHome" placeholder="Optional"/>
                         </el-form-item>
                       </el-col>
                       <el-col :span="8">
                         <el-form-item label="Home Number">
-                          <el-input v-model="profileForm.mobileNumber"/>
+                          <el-input v-model="profileForm.homeNumber" placeholder="Optional"/>
                         </el-form-item>
                       </el-col>
                     </el-row>
@@ -235,27 +235,27 @@ export default {
   data () {
     return {
       profileForm: {
-        certificateID: '',
-        accountID: '',
-        position: '',
-        salutation: '',
-        firstName: '',
-        lastName: '',
-        taxIdentifier: '',
-        dob: '',
-        nationality: '',
-        email: '',
+        certificateID: 'S1111111Z',
+        accountID: '0000001112',
+        position: 'Professor',
+        salutation: 'mr.',
+        firstName: 'Micheal',
+        lastName: 'Keaton',
+        taxIdentifier: 'S1111111Z',
+        dob: new Date('1984-08-25'),
+        nationality: 'Singaporean',
+        email: 'micheal.keaton@smu.edu.sg',
         fax: '',
-        ethnicity: '',
-        gender: '',
-        streetAddress1: '',
+        ethnicity: 'European',
+        gender: 'm',
+        streetAddress1: '605 Bukit Merak Heights, 355605',
         streetAddress2: '',
-        country: '',
-        city: '',
-        state: '',
-        postalCode: '',
-        countryCodeMobile: '',
-        mobileNumber: '',
+        country: 'Singapore',
+        city: 'Singapore',
+        state: 'Singapore',
+        postalCode: '355605',
+        countryCodeMobile: '65',
+        mobileNumber: '97881234',
         countryCodeHome: '',
         homeNumber: ''
       }

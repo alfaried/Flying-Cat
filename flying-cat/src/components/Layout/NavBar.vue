@@ -1,62 +1,77 @@
 <template>
   <div class="navbar-main">
     <el-menu
+      v-show="showNavBar"
       :default-active="activeIndex"
       class="navbar"
       mode="horizontal"
-      router=true>
+      :router="true"
+      background-color="#545c64"
+      text-color="#FFFFFF"
+      active-text-color="#409EFF"
+      @select="handleSelect">
 
       <el-menu-item class="item" index="/overview">
-        <i class="el-icon-s-home"></i>
+        <i class="el-icon-s-home white"></i>
         <span>Home</span>
       </el-menu-item>
 
       <el-submenu index="/student">
         <template slot="title">
-          <i class="el-icon-s-custom item"></i>
+          <i class="el-icon-s-custom item white"></i>
           <span class="item">Students</span>
         </template>
         <el-menu-item class="sub-item" index="/student/management">
-          <i class="el-icon-s-order"></i>
-          <span>Management</span>
+          <i class="el-icon-s-order white sub-item"></i>
+          <span class="sub-item">Management</span>
         </el-menu-item>
         <el-menu-item class="sub-item" index="/student/analytics">
-          <i class="el-icon-s-data"></i>
+          <i class="el-icon-s-data white"></i>
           <span>Analytics</span>
         </el-menu-item>
       </el-submenu>
 
       <el-submenu index="/course">
         <template slot="title">
-          <i class="el-icon-s-management item"></i>
+          <i class="el-icon-s-management item white"></i>
           <span class="item">Courses</span>
         </template>
         <el-menu-item class="sub-item" index="/course/management">
-          <i class="el-icon-s-order"></i>
+          <i class="el-icon-s-order white"></i>
           <span>Management</span>
         </el-menu-item>
         <el-menu-item class="sub-item" index="/course/analytics">
-          <i class="el-icon-s-data"></i>
+          <i class="el-icon-s-data white"></i>
           <span>Analytics</span>
         </el-menu-item>
       </el-submenu>
 
-      <el-menu-item class="item" index="/bootstrap">
-        <i class="el-icon-circle-plus"></i>
+      <el-menu-item class="item" index="/server" disabled>
+        <i class="el-icon-s-platform white"></i>
+        <span>Servers</span>
+      </el-menu-item>
+
+      <el-menu-item class="item" index="/server" disabled>
+        <i class="el-icon-s-opportunity white"></i>
+        <span>Trailheads</span>
+      </el-menu-item>
+
+      <el-menu-item class="item" index="/bootstrap/new">
+        <i class="el-icon-circle-plus white"></i>
         <span>Bootstrap</span>
       </el-menu-item>
 
-      <el-submenu class="right">
+      <el-submenu class="right" index="/">
         <template slot="title">
-          <i class="el-icon-more"></i>
+          <i class="el-icon-more white"></i>
         </template>
         <el-menu-item class="sub-item" index="/profile">
-          <i class="el-icon-user-solid"></i>
+          <i class="el-icon-user-solid white"></i>
           <span>Profile</span>
         </el-menu-item>
         <el-menu-item class="sub-item" index="/">
-          <i class="el-icon-warning"></i>
-          <span>Sign Out</span>
+          <i class="el-icon-warning sign-out"></i>
+          <span class="sign-out">Sign Out</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>
@@ -68,7 +83,8 @@ export default {
   name: 'NavBar',
   data () {
     return {
-      activeIndex: '/'
+      activeIndex: '/',
+      showNavBar: false
     }
   },
   created () {
@@ -76,7 +92,22 @@ export default {
       path: this.activeIndex
     })
   },
-  methods: {}
+  methods: {
+    handleSelect (key, keyPath) {
+      if (key === '/') {
+        this.$showNavBar = false
+      }
+    }
+  },
+  watch: {
+    $showNavBar () {
+      this.showNavBar = this.$showNavBar
+    },
+    $activeNavBarIndex () {
+      console.log(this.$activeNavBarIndex)
+      this.activeIndex = this.$activeNavBarIndex
+    }
+  }
 }
 </script>>
 
@@ -84,6 +115,7 @@ export default {
 <style scoped>
 .navbar {
   text-align: center;
+  width: 100%;
 }
 .item {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -101,5 +133,11 @@ export default {
 }
 .button {
   margin: 10px;
+}
+.sign-out {
+  color: #F56C6C;
+}
+.white {
+  color: #FFFFFF;
 }
 </style>

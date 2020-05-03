@@ -1,6 +1,6 @@
 <template>
   <div class="student-analytics-main">
-    <el-row>
+    <el-row style="margin-bottom: 20px;">
       <h1>Student Analytics</h1>
       <el-divider content-position="left"><h2>{{ "Dashboard to Manage Student Progress" }}</h2></el-divider>
     </el-row>

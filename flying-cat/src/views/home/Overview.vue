@@ -1,20 +1,28 @@
 <template>
   <div class="overview-main">
-    <el-row>
+    <el-row style="margin-bottom: 20px;">
       <h1>Overview</h1>
       <el-divider content-position="left"><h2>View Information About Students and Courses</h2></el-divider>
     </el-row>
 
     <el-card>
-      <el-row :gutter="20">
+      <el-row :gutter="20" style="margin-bottom: 20px;">
+        <el-col :span="24">
+          <el-card shadow="hover" class="inner-card">
+            progress bar
+          </el-card>
+        </el-col>
+      </el-row>
+
+      <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="12">
-          <el-card shadow="hover">
-            <span>Calendar</span>
+          <el-card shadow="hover" class="inner-card">
+            <span>test</span>
           </el-card>
         </el-col>
 
-        <el-col :span="12">
-          <el-card shadow="hover">
+        <el-col :span="12" style="margin-bottom: 20px;">
+          <el-card shadow="hover" class="inner-card">
             <span>test</span>
           </el-card>
         </el-col>
@@ -22,13 +30,13 @@
 
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-card shadow="hover">
+          <el-card shadow="hover" class="inner-card">
             <p>test</p>
           </el-card>
         </el-col>
 
         <el-col :span="12">
-          <el-card shadow="hover">
+          <el-card shadow="hover" class="inner-card">
             <p>test</p>
           </el-card>
         </el-col>

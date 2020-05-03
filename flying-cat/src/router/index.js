@@ -55,9 +55,10 @@ export default new Router({
       meta: { title: 'Course Analytics' }
     },
     {
-      path: '/bootstrap',
+      path: '/bootstrap/:action',
       name: 'Bootstrap',
-      component: Bootstrap
+      component: Bootstrap,
+      props: true
     }
   ]
 })

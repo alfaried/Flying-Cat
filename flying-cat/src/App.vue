@@ -1,8 +1,6 @@
 <template>
   <div class="app-main">
-    <el-header class="header">
-      <NavBar/>
-    </el-header>
+    <NavBar style="box-shadow: 0 5px 5px rgba(0, 0, 0, .12), 0 0 60px rgba(0, 0, 0, .04)"/>
     <el-main class="body">
       <router-view style="padding-left: 20px; padding-right: 20px;"/>
     </el-main>
@@ -31,9 +29,9 @@ h2 {
   font-weight: bolder;
   font-size: 20px;
 }
-.el-row {
+/* .el-row {
   margin-bottom: 20px;
-}
+} */
 .el-col {
   border-radius: 20px;
 }
@@ -43,5 +41,11 @@ h2 {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+.el-card {
+  border-radius: 10px;
+}
+.inner-card:hover {
+  border-color: #409EFF;
 }
 </style>

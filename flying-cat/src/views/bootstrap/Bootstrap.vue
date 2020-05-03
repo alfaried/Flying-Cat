@@ -1,6 +1,6 @@
 <template>
   <div class="courses-main">
-    <el-row>
+    <el-row style="margin-bottom: 20px;">
       <h1>Bootstrap</h1>
       <el-divider content-position="left"><h2>{{ "Add New Students or Courses" }}</h2></el-divider>
     </el-row>
@@ -8,7 +8,7 @@
     <el-card>
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-card shadow="hover">
+          <el-card class="add-student-card inner-card" shadow="hover">
             <div class="card-header" slot="header">
               <i class="el-icon-circle-plus-outline"></i>
               <span>Add Students</span>
@@ -20,7 +20,7 @@
                   <el-collapse-item name="student_manual">
                     <template slot="title">
                       <span class="collapse-header">Manual Entry</span>
-                      <i class="header-icon el-icon-edit-outline collapse-header"/>
+                      <i class="collapse-header el-icon-edit-outline header-icon"/>
                     </template>
 
                     <div class="collapse-body">
@@ -109,7 +109,7 @@
         </el-col>
 
         <el-col :span="12">
-          <el-card shadow="hover">
+          <el-card class="add-course-card inner-card" shadow="hover">
             <div class="card-header" slot="header">
               <i class="el-icon-circle-plus-outline"></i>
               <span>Add Courses</span>
@@ -203,8 +203,8 @@ export default {
   name: 'Students',
   data () {
     return {
-      activeNameStudent: 'student_manual',
-      activeNameCourse: 'course_manual',
+      activeNameStudent: '',
+      activeNameCourse: '',
       studentForm: {
         firstName: '',
         lastName: '',
@@ -219,7 +219,33 @@ export default {
         courseName: '',
         description: '',
         nummOfSections: 1
-      }
+      },
+      fileList: []
+    }
+  },
+  created () {
+    if (this.$route.params.action === 'newCourse') {
+      this.activeNameCourse = 'course_manual'
+    }
+  },
+  methods: {
+    handlePreview () {
+      console.log('upload preview')
+    },
+    handleRemove () {
+      console.log('upload remove')
+    },
+    addStudent () {
+      console.log('add student')
+    },
+    resetStudent () {
+      console.log('reset student')
+    },
+    addCourse () {
+      console.log('add course')
+    },
+    resetCourse () {
+      console.log('reset course')
     }
   }
 }
@@ -235,9 +261,12 @@ export default {
   padding-top: 20px;
 }
 .collapse-header {
-  color: #67C23A;
+  color: #606266;
   font-size: 20px;
   font-weight: bolder;
+}
+.collapse-header:hover {
+  color: #409EFF;
 }
 .collapse-body {
   font-size: 18px;
@@ -268,4 +297,5 @@ export default {
 em {
   color: #409EFF;
 }
+
 </style>
