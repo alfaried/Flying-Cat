@@ -9,7 +9,7 @@
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="24">
           <el-card shadow="hover" class="inner-card">
-            progress bar
+            TO-DO: Progress Bar
           </el-card>
         </el-col>
       </el-row>
@@ -17,13 +17,13 @@
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="12">
           <el-card shadow="hover" class="inner-card">
-            <span>test</span>
+            <span>TO-DO: Students</span>
           </el-card>
         </el-col>
 
         <el-col :span="12" style="margin-bottom: 20px;">
           <el-card shadow="hover" class="inner-card">
-            <span>test</span>
+            <span>TO-DO: Courses</span>
           </el-card>
         </el-col>
       </el-row>
@@ -31,13 +31,13 @@
       <el-row :gutter="20">
         <el-col :span="12">
           <el-card shadow="hover" class="inner-card">
-            <p>test</p>
+            <span>TO-DO: Servers</span>
           </el-card>
         </el-col>
 
         <el-col :span="12">
           <el-card shadow="hover" class="inner-card">
-            <p>test</p>
+            <span>TO-DO: Trailheads</span>
           </el-card>
         </el-col>
       </el-row>

@@ -11,6 +11,9 @@ import studentAnalytics from '@/views/student/Student_Analytics'
 import courseManagement from '@/views/course/Course_Management'
 import courseAnalytics from '@/views/course/Course_Analytics'
 
+import serverManagement from '@/views/server/Server_Management'
+import trailheadManagement from '@/views/trailhead/Trailhead_Management'
+
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +56,18 @@ export default new Router({
       name: 'Course_Analytics',
       component: courseAnalytics,
       meta: { title: 'Course Analytics' }
+    },
+    {
+      path: '/server/management/:profile',
+      name: 'Server_Management',
+      component: serverManagement,
+      props: true
+    },
+    {
+      path: '/trailhead/management/:profile',
+      name: 'Trialhead_Management',
+      component: trailheadManagement,
+      props: true
     },
     {
       path: '/bootstrap/:action',

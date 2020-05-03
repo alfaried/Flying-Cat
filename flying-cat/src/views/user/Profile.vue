@@ -263,10 +263,10 @@ export default {
   },
   methods: {
     update () {
-      // TO-DO
+      console.log('Update Profile')
     },
     reset () {
-      // TO-DO
+      console.log('Reset Profile')
     }
   }
 }

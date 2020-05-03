@@ -4,6 +4,10 @@
       <h1>Course Analytics</h1>
       <el-divider content-position="left"><h2>{{ "Dashboard to Manage Courses Progress" }}</h2></el-divider>
     </el-row>
+
+    <el-card>
+      TO-DO
+    </el-card>
   </div>
 </template>
 

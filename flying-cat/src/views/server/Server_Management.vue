@@ -1,8 +1,8 @@
 <template>
   <div class="student-analytics-main">
     <el-row style="margin-bottom: 20px;">
-      <h1>Student Analytics</h1>
-      <el-divider content-position="left"><h2>{{ "Dashboard to Manage Student Progress" }}</h2></el-divider>
+      <h1>Server Management</h1>
+      <el-divider content-position="left"><h2>{{ "View & Manage Student's Deployed Servers" }}</h2></el-divider>
     </el-row>
 
     <el-card>
@@ -13,9 +13,15 @@
 
 <script>
 export default {
-  name: 'Student_Analytics',
+  name: 'Server_Management',
   data () {
-    return {}
+    return {
+      profile: ''
+    }
+  },
+  created () {
+    console.log(this.$route.params)
+    this.profile = this.$route.params
   }
 }
 </script>

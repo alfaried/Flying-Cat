@@ -59,7 +59,7 @@
                 align="center"
                 width="300">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="route('server')">{{ scope.row.server_profile }}</el-button>
+                  <el-button type="text" @click="route('server', scope.row.server_profile)">{{ scope.row.server_profile }}</el-button>
                 </template>
               </el-table-column>
               <!-- Leads to Trialhead profile page -->
@@ -70,7 +70,7 @@
                 align="center"
                 width="250">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="route('trailhead')">{{ scope.row.trailhead_profile }}</el-button>
+                  <el-button type="text" @click="route('trailhead', scope.row.trailhead_profile)">{{ scope.row.trailhead_profile }}</el-button>
                 </template>
               </el-table-column>
               <!-- Online or Offline -->
@@ -282,7 +282,7 @@ export default {
         courseName: '',
         courseDesc: '',
         status: '',
-        progress: ''
+        progress: 0
       },
       personalForm: {
         salutation: '',
@@ -303,24 +303,24 @@ export default {
     this.tableData = studentList
   },
   methods: {
-    route (location) {
-      var pageName = 'Trailhead Profiles' // TO-DO: Fill in - trailhead
-      var pageUrl = '' // TO-DO: Fill in - trailhead
+    route (location, profile) {
+      var pageName = 'Trialhead_Management'
+      var pageUrl = '/trailhead/management'
 
       if (location === 'server') {
-        pageName = 'Server Profiles' // TO-DO: Fill in
-        pageUrl = '' // TO-DO: Fill in
+        pageName = 'Server_Management'
+        pageUrl = '/server/management'
       }
 
-      this.$confirm('Go to ' + pageName + ' page ?', 'Confirm', {
+      this.$confirm('Go to ' + pageName.split('_').join(' ') + ' page ?', 'Confirm', {
         confirmButtonText: 'Yes',
         cancelButtonText: 'Cancel'
       }).then(() => {
-        // this.$activeNavBarIndex = pageUrl
-        // this.$router.push({
-        //   name: pageName,
-        //   params: { action: 'newCourse' }
-        // })
+        this.$activeNavBarIndex = pageUrl
+        this.$router.push({
+          name: pageName,
+          params: { profile: profile }
+        })
       }).catch(() => {
         // Do nothing
       })
@@ -351,16 +351,16 @@ export default {
       console.log('Remove Student')
     },
     updateGeneral () {
-      // TO-DO
+      console.log('Update General Information')
     },
     resetGeneral () {
-      // TO-DO
+      console.log('Reset General Information')
     },
     updatePersonal () {
-      // TO-DO
+      console.log('Update Personal Information')
     },
     resetPersonal () {
-      // TO-DO
+      console.log('Reset Personal Information')
     }
   }
 }

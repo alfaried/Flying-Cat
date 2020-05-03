@@ -126,7 +126,7 @@ const studentList = [{
     first: 'Billy',
     last: 'Tay'
   },
-  email: 'bliyy.tay.2016@smu.edu.sg',
+  email: 'billy.tay.2016@smu.edu.sg',
   nric: 'S9476846A',
   gender: 'm',
   address: '123 ABC Street, #01-51, S900123',
@@ -134,7 +134,7 @@ const studentList = [{
   mobileNumber: '87769912',
   server_profile: 'AWS-8573947502356',
   trailhead_profile: 'billtyTay',
-  status: 'Offline',
+  status: 'Online',
   progress: '67'
 }, {
   salutation: 'ms.',

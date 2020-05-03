@@ -7,7 +7,7 @@
           <i class="extra">V1.5</i>
         </el-row>
         <el-row>
-          <span class="subtitle">Cloud Learning Environment</span>
+          <span class="subtitle">Cloud Management System</span>
         </el-row>
       </div>
       <div class="card-login-body">
