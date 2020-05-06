@@ -2,14 +2,21 @@
   <div class="overview-main">
     <el-row style="margin-bottom: 20px;">
       <h1>Overview</h1>
-      <el-divider content-position="left"><h2>View Information About Students and Courses</h2></el-divider>
+      <el-divider content-position="left"><h2>Welcome back, <b>Micheal Keaton</b></h2></el-divider>
     </el-row>
 
     <el-card>
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="24">
           <el-card shadow="hover" class="inner-card">
-            TO-DO: Progress Bar
+            <div class="card-header" slot="header">
+              <i class="el-icon-alarm-clock"></i>
+              <span>{{ todayDateTime }}</span>
+            </div>
+
+            <div class="card-body">
+              <el-progress :show-text="false" :stroke-width="40" :percentage="70" status="warning"></el-progress>
+            </div>
           </el-card>
         </el-col>
       </el-row>
@@ -49,8 +56,23 @@
 export default {
   name: 'overview',
   data () {
-    return {}
-  }
+    return {
+      todayDateTime: ''
+    }
+  },
+  created () {
+    var today = new Date()
+    var options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    }
+    this.todayDateTime = new Intl.DateTimeFormat('default', options).format(today)
+  },
+  methods: {}
 }
 </script>
 

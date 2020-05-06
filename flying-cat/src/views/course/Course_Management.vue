@@ -152,6 +152,11 @@ export default {
     },
     update () {
       console.log('Update Course Info')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "updateCourseInfo" is not mapped yet.',
+        type: 'warning'
+      })
     },
     reset () {
       this.fetchData()

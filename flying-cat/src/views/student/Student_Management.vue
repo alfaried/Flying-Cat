@@ -102,7 +102,7 @@
                 header-align="center"
                 align="center"
                 width="150">
-                <template slot-scope="scope">
+                <template>
                   <el-button size="small" type="danger" @click="handleRemove" plain>Remove</el-button>
                 </template>
               </el-table-column>
@@ -284,6 +284,7 @@ export default {
         status: '',
         progress: 0
       },
+      generalFormCopy: {},
       personalForm: {
         salutation: '',
         firstName: '',
@@ -295,6 +296,7 @@ export default {
         countryCode: '',
         mobileNumber: ''
       },
+      personalFormCopy: {},
       tableData: []
     }
   },
@@ -336,6 +338,7 @@ export default {
       this.personalForm.address = row.address
       this.personalForm.countryCode = row.countryCode
       this.personalForm.mobileNumber = row.mobileNumber
+      this.personalFormCopy = JSON.parse(JSON.stringify(this.personalForm))
 
       // Populate general information
       this.generalForm.section = row.section
@@ -345,22 +348,40 @@ export default {
       this.generalForm.courseName = row.course_name
       this.generalForm.courseDesc = row.course_desc
       this.generalForm.status = row.status
-      this.generalForm.progress = row.progress
+      this.generalForm.progress = parseInt(row.progress)
+      this.generalFormCopy = JSON.parse(JSON.stringify(this.generalForm))
     },
     handleRemove () {
       console.log('Remove Student')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "removeStudent" is not mapped yet.',
+        type: 'warning'
+      })
     },
     updateGeneral () {
       console.log('Update General Information')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "updateGeneralInfo" is not mapped yet.',
+        type: 'warning'
+      })
     },
     resetGeneral () {
       console.log('Reset General Information')
+      this.generalForm = JSON.parse(JSON.stringify(this.generalFormCopy))
     },
     updatePersonal () {
       console.log('Update Personal Information')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "updatePersonalInfo" is not mapped yet.',
+        type: 'warning'
+      })
     },
     resetPersonal () {
       console.log('Reset Personal Information')
+      this.personalForm = JSON.parse(JSON.stringify(this.personalFormCopy))
     }
   }
 }

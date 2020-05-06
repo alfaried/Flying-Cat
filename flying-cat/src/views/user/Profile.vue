@@ -78,7 +78,7 @@
                 </el-col>
                 <el-col :span="6">
                   <el-form-item label="Date of Birth">
-                    <el-date-picker type="date" placeholder="Pick a date" v-model="profileForm.dob" style="width: 100%;" @change="show"/>
+                    <el-date-picker type="date" placeholder="Pick a date" v-model="profileForm.dob" style="width: 100%;"/>
                   </el-form-item>
                 </el-col>
                 <el-col :span="6">
@@ -264,9 +264,39 @@ export default {
   methods: {
     update () {
       console.log('Update Profile')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "updateProfile" is not mapped yet.',
+        type: 'warning'
+      })
     },
     reset () {
       console.log('Reset Profile')
+      this.profileForm = {
+        certificateID: 'S1111111Z',
+        accountID: '0000001112',
+        position: 'Professor',
+        salutation: 'mr.',
+        firstName: 'Micheal',
+        lastName: 'Keaton',
+        taxIdentifier: 'S1111111Z',
+        dob: new Date('1984-08-25'),
+        nationality: 'Singaporean',
+        email: 'micheal.keaton@smu.edu.sg',
+        fax: '',
+        ethnicity: 'European',
+        gender: 'm',
+        streetAddress1: '605 Bukit Merak Heights, 355605',
+        streetAddress2: '',
+        country: 'Singapore',
+        city: 'Singapore',
+        state: 'Singapore',
+        postalCode: '355605',
+        countryCodeMobile: '65',
+        mobileNumber: '97881234',
+        countryCodeHome: '',
+        homeNumber: ''
+      }
     }
   }
 }

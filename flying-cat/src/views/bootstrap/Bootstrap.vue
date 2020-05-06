@@ -19,8 +19,8 @@
                 <el-collapse v-model="activeNameStudent" accordion>
                   <el-collapse-item name="student_manual">
                     <template slot="title">
-                      <span class="collapse-header">Manual Entry</span>
-                      <i class="collapse-header el-icon-edit-outline header-icon"/>
+                      <span class="collapse-header highlight">Manual Entry</span>
+                      <i class="collapse-header el-icon-edit-outline header-icon highlight"/>
                     </template>
 
                     <div class="collapse-body">
@@ -72,7 +72,7 @@
                         <el-row>
                           <el-form-item class="card-button">
                             <el-button icon="el-icon-circle-check" type="primary" @click="addStudent" plain>Add</el-button>
-                            <el-button icon="el-icon-refresh" type="warning" @click="resetStudent" plain>Reset</el-button>
+                            <el-button icon="el-icon-refresh" type="warning" @click="resetStudent" plain>Clear</el-button>
                           </el-form-item>
                         </el-row>
                       </el-form>
@@ -81,8 +81,8 @@
 
                   <el-collapse-item name="student_upload">
                     <template slot="title">
-                      <span class="collapse-header">Upload CSV</span>
-                      <i class="header-icon el-icon-upload2 collapse-header"/>
+                      <span class="collapse-header highlight">Upload CSV</span>
+                      <i class="collapse-header el-icon-upload2 header-icon highlight"/>
                     </template>
 
                     <div class="collapse-body">
@@ -120,8 +120,8 @@
                 <el-collapse v-model="activeNameCourse" accordion>
                   <el-collapse-item name="course_manual">
                     <template slot="title">
-                      <span class="collapse-header">Manual Entry</span>
-                      <i class="collapse-header el-icon-edit-outline header-icon"/>
+                      <span class="collapse-header highlight">Manual Entry</span>
+                      <i class="collapse-header el-icon-edit-outline header-icon highlight"/>
                     </template>
 
                     <div class="collapse-body">
@@ -156,19 +156,19 @@
                           <div class="wrapper">
                             <el-form-item class="card-button">
                               <el-button icon="el-icon-circle-check" type="primary" @click="addCourse" plain>Add</el-button>
-                              <el-button icon="el-icon-refresh" type="warning" @click="resetCourse" plain>Reset</el-button>
+                              <el-button icon="el-icon-refresh" type="warning" @click="resetCourse" plain>Clear</el-button>
                             </el-form-item>
                           </div>
                         </el-row>
                       </el-form>
                     </div>
-                    <br><br><br><br>
+                    <br><br><br>
                   </el-collapse-item>
 
                   <el-collapse-item name="course_upload">
                     <template slot="title">
-                      <span class="collapse-header">Upload CSV</span>
-                      <i class="header-icon el-icon-upload2 collapse-header"/>
+                      <span class="collapse-header highlight">Upload CSV</span>
+                      <i class="collapse-header el-icon-upload2 header-icon highlight"/>
                     </template>
 
                     <div class="collapse-body">
@@ -237,15 +237,40 @@ export default {
     },
     addStudent () {
       console.log('add student')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "addStudent" is not mapped yet.',
+        type: 'warning'
+      })
     },
     resetStudent () {
       console.log('reset student')
+      this.studentForm = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        nric: '',
+        courseCode: '',
+        section: '',
+        team: ''
+      }
     },
     addCourse () {
       console.log('add course')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, function "addCourse" is not mapped yet.',
+        type: 'warning'
+      })
     },
     resetCourse () {
       console.log('reset course')
+      this.courseForm = {
+        courseCode: '',
+        courseName: '',
+        description: '',
+        nummOfSections: 1
+      }
     }
   }
 }
@@ -264,8 +289,10 @@ export default {
   color: #606266;
   font-size: 20px;
   font-weight: bolder;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
 }
-.collapse-header:hover {
+.highlight:hover {
   color: #409EFF;
 }
 .collapse-body {
