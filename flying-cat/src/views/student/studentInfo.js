@@ -17,7 +17,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '93456789',
-  server_profile: 'AWS-195738463829',
+  cloud_profile: 'AWS-195738463829',
   trailhead_profile: 'alfredPeng',
   status: 'Online',
   progress: '50'
@@ -40,7 +40,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '87695467',
-  server_profile: 'AWS-0596847362893',
+  cloud_profile: 'AWS-0596847362893',
   trailhead_profile: 'mlevinNg',
   status: 'Online',
   progress: '55'
@@ -63,7 +63,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '89765735',
-  server_profile: 'AWS-837462738491',
+  cloud_profile: 'AWS-837462738491',
   trailhead_profile: 'fredrickTan',
   status: 'Offline',
   progress: '48'
@@ -86,7 +86,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '96758156',
-  server_profile: 'AWS-047583926174',
+  cloud_profile: 'AWS-047583926174',
   trailhead_profile: 'peiQi',
   status: 'Offline',
   progress: '56'
@@ -109,7 +109,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '89112253',
-  server_profile: 'AWS-746382910564',
+  cloud_profile: 'AWS-746382910564',
   trailhead_profile: 'junadiTan',
   status: 'Online',
   progress: '45'
@@ -132,7 +132,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '87769912',
-  server_profile: 'AWS-8573947502356',
+  cloud_profile: 'AWS-8573947502356',
   trailhead_profile: 'billtyTay',
   status: 'Online',
   progress: '67'
@@ -155,7 +155,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '99991234',
-  server_profile: 'AWS-9473826185930',
+  cloud_profile: 'AWS-9473826185930',
   trailhead_profile: 'sittiAisyah',
   status: 'Online',
   progress: '68'
@@ -178,7 +178,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '90014567',
-  server_profile: 'AWS-8374629400573',
+  cloud_profile: 'AWS-8374629400573',
   trailhead_profile: 'jenLavison',
   status: 'Online',
   progress: '70'
@@ -201,7 +201,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '80013354',
-  server_profile: 'AWS-364725381950',
+  cloud_profile: 'AWS-364725381950',
   trailhead_profile: 'hitMonLi',
   status: 'Offline',
   progress: '69'
@@ -224,7 +224,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '82311154',
-  server_profile: 'AWS-946573810346',
+  cloud_profile: 'AWS-946573810346',
   trailhead_profile: 'laosaiLi',
   status: 'Offline',
   progress: '30'

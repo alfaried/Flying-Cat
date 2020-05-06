@@ -28,7 +28,10 @@
                 label="Course Code"
                 header-align="center"
                 align="center"
-                width="150">
+                width="150"
+                column-key="course_code"
+                :filters="[{text: 'IS101', value: 'IS101'}, {text: 'ESM240', value: 'ESM240'}, {text: 'MCRA380', value: 'MCRA380'}]"
+                :filter-method="filterHandler">
               </el-table-column>
               <el-table-column
                 property="section"
@@ -54,12 +57,12 @@
               <!-- Leades to AWS Server profile page -->
               <el-table-column
                 property=""
-                label="Server Profile"
+                label="Cloud Profile"
                 header-align="center"
                 align="center"
                 width="300">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="route('server', scope.row.server_profile)">{{ scope.row.server_profile }}</el-button>
+                  <el-button type="text" @click="route('server', scope.row.cloud_profile)">{{ scope.row.cloud_profile }}</el-button>
                 </template>
               </el-table-column>
               <!-- Leads to Trialhead profile page -->
@@ -75,11 +78,14 @@
               </el-table-column>
               <!-- Online or Offline -->
               <el-table-column
-                property=""
+                property="status"
                 label="Status"
                 header-align="center"
                 align="center"
-                width="150">
+                width="150"
+                column-key="status"
+                :filters="[{text: 'Online', value: 'Online'}, {text: 'Offline', value: 'Offline'}]"
+                :filter-method="filterHandler">
                 <template slot-scope="scope">
                   <div v-if="scope.row.status === 'Online'">
                     <font color="#67C23A">
@@ -89,7 +95,7 @@
                   </div>
                   <div v-else>
                     <font color="#F56C6C">
-                      <i class="el-icon-success"></i>
+                      <i class="el-icon-error"></i>
                       <b><span style="margin-left: 10px">{{ scope.row.status }}</span></b>
                     </font>
                   </div>
@@ -103,7 +109,10 @@
                 align="center"
                 width="150">
                 <template>
-                  <el-button size="small" type="danger" @click="handleRemove" plain>Remove</el-button>
+                  <el-button size="small" type="danger" @click="handleRemove" plain>
+                    <i class="el-icon-delete"></i>
+                    <span>Remove</span>
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -305,12 +314,16 @@ export default {
     this.tableData = studentList
   },
   methods: {
-    route (location, profile) {
+    filterHandler (value, row, column) {
+      const property = column['property']
+      return row[property] === value
+    },
+    route (location, params) {
       var pageName = 'Trialhead_Management'
       var pageUrl = '/trailhead/management'
 
       if (location === 'server') {
-        pageName = 'Server_Management'
+        pageName = 'Cloud_Profile'
         pageUrl = '/server/management'
       }
 
@@ -321,7 +334,7 @@ export default {
         this.$activeNavBarIndex = pageUrl
         this.$router.push({
           name: pageName,
-          params: { profile: profile }
+          params: { profileID: params }
         })
       }).catch(() => {
         // Do nothing
