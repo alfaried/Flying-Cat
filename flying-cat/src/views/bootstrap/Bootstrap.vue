@@ -44,9 +44,14 @@
                               <el-input v-model="studentForm.email"/>
                             </el-form-item>
                           </el-col>
-                          <el-col :span="12">
+                          <el-col :span="6">
                             <el-form-item label="NRIC">
                               <el-input v-model="studentForm.nric"/>
+                            </el-form-item>
+                          </el-col>
+                          <el-col :span="6">
+                            <el-form-item label="Metric Number">
+                              <el-input v-model="studentForm.metricNumber"/>
                             </el-form-item>
                           </el-col>
                         </el-row>
@@ -64,7 +69,7 @@
                           </el-col>
                           <el-col :span="8">
                             <el-form-item label="Team">
-                              <el-input v-model="studentForm.team"/>
+                              <el-input v-model="studentForm.team" placeholder="Optional"/>
                             </el-form-item>
                           </el-col>
                         </el-row>
@@ -212,7 +217,8 @@ export default {
         nric: '',
         courseCode: '',
         section: '',
-        team: ''
+        team: '',
+        metricNumber: ''
       },
       courseForm: {
         courseCode: '',
@@ -252,7 +258,8 @@ export default {
         nric: '',
         courseCode: '',
         section: '',
-        team: ''
+        team: '',
+        metricNumber: ''
       }
     },
     addCourse () {
