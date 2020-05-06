@@ -6,9 +6,9 @@
       class="navbar"
       mode="horizontal"
       :router="true"
-      background-color="#545c64"
+      background-color="#303133"
       text-color="#FFFFFF"
-      active-text-color="#409EFF"
+      active-text-color="#ffd04b"
       @select="handleSelect">
 
       <el-menu-item class="item" index="/overview">
@@ -69,7 +69,7 @@
           <i class="el-icon-user-solid white"></i>
           <span>Profile</span>
         </el-menu-item>
-        <el-menu-item class="sub-item" index="/">
+        <el-menu-item class="sub-item" index="">
           <i class="el-icon-warning sign-out"></i>
           <span class="sign-out">Sign Out</span>
         </el-menu-item>
@@ -79,6 +79,8 @@
 </template>>
 
 <script>
+import image from '@/assets/New_Lands.jpg'
+
 export default {
   name: 'NavBar',
   data () {
@@ -94,8 +96,16 @@ export default {
   },
   methods: {
     handleSelect (key, keyPath) {
-      if (key === '/') {
+      if (key === '') {
         this.$showNavBar = false
+
+        // Change background back to image
+        document.body.style.background = 'url(' + image + ')'
+        document.body.style.backgroundSize = 'cover'
+
+        this.$router.push({
+          path: '/'
+        })
       }
     }
   },
@@ -116,10 +126,11 @@ export default {
 .navbar {
   text-align: center;
   width: 100%;
+  /* background: rgb(204, 204, 204); */
 }
 .item {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 .sub-item {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
