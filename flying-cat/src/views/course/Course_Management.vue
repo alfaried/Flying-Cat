@@ -83,10 +83,15 @@
                       </el-row>
 
                       <el-row :gutter="20">
-                        <el-col :span="24">
+                        <el-col :span="16">
                           <el-form-item class="card-button">
                             <el-button icon="el-icon-edit" type="primary" @click="update" plain>Update</el-button>
                             <el-button icon="el-icon-refresh" type="warning" @click="reset" plain>Reset</el-button>
+                          </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                          <el-form-item class="card-button-delete">
+                            <el-button icon="el-icon-delete" type="danger" @click="remove" plain>Remove</el-button>
                           </el-form-item>
                         </el-col>
                       </el-row>
@@ -148,6 +153,12 @@ export default {
         }).catch(() => {
           this.activeTab = '0'
         })
+      } else {
+        this.courseForm = {
+          teamPax: '',
+          studentPax: '',
+          section: ''
+        }
       }
     },
     update () {
@@ -160,6 +171,14 @@ export default {
     },
     reset () {
       this.fetchData()
+    },
+    remove () {
+      console.log('Remove Select Course')
+      this.$notify({
+        title: 'Warning',
+        message: 'This is a prototype, button function "removeCourse" is not mapped yet.',
+        type: 'warning'
+      })
     }
   }
 }
@@ -172,6 +191,11 @@ export default {
 }
 .card-button {
   float: left;
+  padding-top: 20px;
+  padding-bottom: 32px;
+}
+.card-button-delete {
+  float: right;
   padding-top: 20px;
   padding-bottom: 32px;
 }
