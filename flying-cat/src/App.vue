@@ -9,21 +9,28 @@
 
 <script>
 import NavBar from '@/components/Layout/NavBar.vue'
+import image from '@/assets/New_Lands.jpg'
 
 export default {
   name: 'App',
   components: {
     NavBar
+  },
+  created () {
+    // Change background back to image
+    document.body.style.background = 'url(' + image + ')'
+    document.body.style.backgroundSize = 'cover'
   }
 }
 </script>
 
 <style>
 h1 {
-  padding-bottom: 10px;
+  /* color: white; */
 }
 h2 {
   font-weight: normal;
+  /* color: white; */
 }
 .card-header {
   font-weight: bolder;
@@ -39,13 +46,12 @@ h2 {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  /* margin-top: 60px; */
 }
 .el-card {
   border-radius: 10px;
 }
 .inner-card:hover {
-  border-color: #409EFF;
+  border-color: #ffd04b;
+  border-width: 3px;
 }
 </style>
