@@ -46,12 +46,12 @@
         </el-menu-item>
       </el-submenu>
 
-      <el-menu-item class="item" index="/server/management/general">
+      <el-menu-item class="item" index="/server/management">
         <i class="el-icon-s-platform white"></i>
         <span>Servers</span>
       </el-menu-item>
 
-      <el-menu-item class="item" index="/trailhead/management/general">
+      <el-menu-item class="item" index="/trailhead/management" disabled>
         <i class="el-icon-s-opportunity white"></i>
         <span>Trailheads</span>
       </el-menu-item>
