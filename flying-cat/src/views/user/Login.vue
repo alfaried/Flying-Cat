@@ -76,6 +76,10 @@ export default {
             }, 2000)
             this.$showNavBar = true
             this.$activeNavBarIndex = '/overview'
+
+            // Change background back to white
+            document.body.style.background = '#FFFFFF'
+
             this.$router.push({
               path: '/overview'
             })
@@ -97,8 +101,10 @@ export default {
   top: 50%;
   margin: -250px -275px;
   border-radius: 25px;
-  /* border-color: #409EFF;
-  border-style: dashed; */
+  opacity: 0.85;
+}
+.card-login:hover {
+  opacity: 1;
 }
 .card-login-header {
   text-align: center;
