@@ -15,7 +15,8 @@
             </div>
 
             <div class="card-body">
-              <el-progress :show-text="false" :stroke-width="40" :percentage="70" status="warning"></el-progress>
+              <span class="progress-header">Term 3A Progress:</span>
+              <el-progress :show-text="false" :stroke-width="40" :percentage="70" class="progress-bar" status="warning"></el-progress>
             </div>
           </el-card>
         </el-col>
@@ -78,5 +79,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.progress-header {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+.progress-bar {
+  padding-top: 15px;
+}
 </style>
