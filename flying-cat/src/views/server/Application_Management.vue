@@ -9,19 +9,19 @@
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="8">
           <el-card shadow="hover" class="inner-card">
-            Overview 1
+            TO-DO: Overview 1
           </el-card>
         </el-col>
 
         <el-col :span="8">
           <el-card shadow="hover" class="inner-card">
-            Overview 2
+            TO-DO: Overview 2
           </el-card>
         </el-col>
 
         <el-col :span="8">
           <el-card shadow="hover" class="inner-card">
-            Overview 3
+            TO-DO: Overview 3
           </el-card>
         </el-col>
       </el-row>
