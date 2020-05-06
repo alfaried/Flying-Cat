@@ -27,6 +27,24 @@ const serverList = [{
       applicationIP: '100.1.1.3',
       applicationStatus: 'Down',
       applicationUsage: '0%'
+    },
+    {
+      section: 'G1',
+      team: 'T2',
+      projectName: 'G1_Aisyah_Lab_1',
+      cloudProfile: 'AWS-9473826185930',
+      applicationIP: '200.1.1.1',
+      applicationStatus: 'Healthy',
+      applicationUsage: '22%'
+    },
+    {
+      section: 'G1',
+      team: 'T2',
+      projectName: 'Lavinson_G1_T2_Lab1',
+      cloudProfile: 'AWS-8374629400573',
+      applicationIP: '200.1.1.2',
+      applicationStatus: 'Down',
+      applicationUsage: '0%'
     }
   ]
 }]
