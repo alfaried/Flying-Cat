@@ -26,7 +26,7 @@ export default {
 
 <style>
 h1 {
-  /* color: white; */
+  padding-bottom: 10px;
 }
 h2 {
   font-weight: normal;
