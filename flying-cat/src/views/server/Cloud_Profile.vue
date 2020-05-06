@@ -1,8 +1,8 @@
 <template>
   <div class="course-analytics-main">
     <el-row style="margin-bottom: 20px;">
-      <h1>Server Profile</h1>
-      <el-divider content-position="left"><h2>{{ "View Specific Server Information" }}</h2></el-divider>
+      <h1>Cloud Profile</h1>
+      <el-divider content-position="left"><h2>Profile ID: <b>{{ cloudProfile }}</b></h2></el-divider>
     </el-row>
 
     <el-card>
@@ -13,9 +13,14 @@
 
 <script>
 export default {
-  name: 'Server_Profile',
+  name: 'Cloud_Profile',
   data () {
-    return {}
+    return {
+      cloudProfile: ''
+    }
+  },
+  created () {
+    this.cloudProfile = this.$route.params.profileID
   }
 }
 </script>
