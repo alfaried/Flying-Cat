@@ -7,8 +7,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 
-// import '@/styles/variables.scss'
-// import '@/styles/index.scss'
+import '@/styles/variables.scss'
+import '@/styles/index.scss'
 import '@/icons'
 
 import Vue from 'vue'
