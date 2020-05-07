@@ -106,6 +106,8 @@ export default {
         this.$router.push({
           path: '/'
         })
+      } else {
+        this.$activeNavBarIndex = key
       }
     }
   },
