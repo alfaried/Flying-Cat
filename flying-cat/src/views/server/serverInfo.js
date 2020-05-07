@@ -1,3 +1,177 @@
+const cloudProfileData = {
+  'AWS-233703087823': {
+    accountCategory: 'Student',
+    accountName: 'Al Faried',
+    accountEmail: 'alfariedy.2016@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      },
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1b'
+      }
+    ]
+  },
+  'AWS-195738463829': {
+    accountCategory: 'Student',
+    accountName: 'Alfred',
+    accountEmail: 'alfred.peng.2017@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-0596847362893': {
+    accountCategory: 'Student',
+    accountName: 'Melvin',
+    accountEmail: 'melvin.ng.2016@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-837462738491': {
+    accountCategory: 'Student',
+    accountName: 'Fredrick',
+    accountEmail: 'fredrick.tan.2016@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1c'
+      }
+    ]
+  },
+  'AWS-9473826185930': {
+    accountCategory: 'Student',
+    accountName: 'Aisyah',
+    accountEmail: 'sitti.aisyah.2015@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1c'
+      }
+    ]
+  },
+  'AWS-8374629400573': {
+    accountCategory: 'Student',
+    accountName: 'J Lavinson',
+    accountEmail: 'jen.lavison.2016@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-746382910564': {
+    accountCategory: 'Student',
+    accountName: 'Junadi T',
+    accountEmail: 'junadi.tan.2015@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1b'
+      }
+    ]
+  },
+  'AWS-946573810346': {
+    accountCategory: 'Student',
+    accountName: 'Laosai',
+    accountEmail: 'laosai.li.2015@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-628394017485': {
+    accountCategory: 'Student',
+    accountName: 'Lavita',
+    accountEmail: 'lavita.singh.2016@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-746503729578': {
+    accountCategory: 'Student',
+    accountName: 'Mambuk',
+    accountEmail: 'mambuk.madi.2015@smu.edu.sg',
+    serviceList: [
+      {
+        serviceType: 'Compute',
+        serviceName: 'ec2-instance',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1a'
+      }
+    ]
+  },
+  'AWS-047583926174': {
+    accountCategory: 'Student',
+    accountName: 'Pei Qi',
+    accountEmail: 'pei.qi.2018@smu.edu.sg',
+    serviceList: []
+  },
+  'AWS-8573947502356': {
+    accountCategory: 'Student',
+    accountName: 'Billy Tay',
+    accountEmail: 'billy.tay.2016@smu.edu.sg',
+    serviceList: []
+  },
+  'AWS-364725381950': {
+    accountCategory: 'Student',
+    accountName: 'HML',
+    accountEmail: 'hit.mon.li.2015@smu.edu.sg',
+    serviceList: []
+  },
+  'AWS-847503829561': {
+    accountCategory: 'Student',
+    accountName: 'Slitva D.',
+    accountEmail: 'slitva.danugaranan.2015@smu.edu.sg',
+    serviceList: []
+  }
+}
+
 const serverList = [{
   label: 'ESM240',
   data: [
@@ -6,7 +180,7 @@ const serverList = [{
       team: 'T3',
       projectName: 'Alfaried_Flying_Cat_Lab',
       cloudProfile: 'AWS-233703087823',
-      applicationIP: '',
+      applicationIP: '300.1.1.3',
       applicationStatus: 'Down',
       applicationUsage: 0
     },
@@ -94,4 +268,4 @@ const serverList = [{
   ]
 }]
 
-export { serverList }
+export { serverList, cloudProfileData }

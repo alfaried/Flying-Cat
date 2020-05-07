@@ -293,7 +293,7 @@ const studentList = [{
   address: '123 ABC Street, #01-51, S900123',
   countryCode: '65',
   mobileNumber: '90578816',
-  cloud_profile: 'AWS-628394017485',
+  cloud_profile: 'AWS-847503829561',
   trailhead_profile: 'slitvaDanugaranan',
   status: 'Online',
   progress: '58'
