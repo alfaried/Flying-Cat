@@ -3,6 +3,15 @@ const serverList = [{
   data: [
     {
       section: 'G1',
+      team: 'T3',
+      projectName: 'Alfaried_Flying_Cat_Lab',
+      cloudProfile: 'AWS-233703087823',
+      applicationIP: '',
+      applicationStatus: 'Down',
+      applicationUsage: 0
+    },
+    {
+      section: 'G1',
       team: 'T1',
       projectName: 'ESM240_G1_Alfred_Lab1',
       cloudProfile: 'AWS-195738463829',

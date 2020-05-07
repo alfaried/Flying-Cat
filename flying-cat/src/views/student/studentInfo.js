@@ -1,4 +1,28 @@
-const studentList = [{
+const studentList = [
+{
+  salutation: 'mr.',
+  course_code: 'ESM240',
+  course_name: 'Enterprise Solution Management',
+  course_desc: '-',
+  section: 'G1',
+  team: 'T3',
+  metric_number: '01329516',
+  name: {
+    full: 'Al Faried Yusri Yusoff',
+    first: 'Al Faried Yusri',
+    last: 'Yusoff'
+  },
+  email: 'alfariedy.2016@smu.edu.sg',
+  nric: 'S9429361H',
+  gender: 'M',
+  address: '858 Tampines Avenue 5, #10-535, S520858',
+  countryCode: '65',
+  mobileNumber: '91169096',
+  cloud_profile: 'AWS-233703087823',
+  trailhead_profile: 'alfaried',
+  status: 'Online',
+  progress: '62'
+}, {
   salutation: 'mr.',
   course_code: 'ESM240',
   course_name: 'Enterprise Solution Management',
