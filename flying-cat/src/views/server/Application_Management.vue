@@ -7,19 +7,65 @@
 
     <el-card>
       <el-row :gutter="20" style="margin-bottom: 20px;">
-        <el-col :span="8">
-          <el-card shadow="hover" class="inner-card">
-            TO-DO: Overview 1
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card overview-info">
+            <el-row class="overview-1-row">
+              <el-row class="overview-1-header">
+                <i class="el-icon-s-platform"/>
+                <strong>{{ overview1Info.totalApps }}</strong>
+              </el-row>
+
+              <el-row class="overview-1-body">
+                <strong>Deployed Apps</strong>
+              </el-row>
+            </el-row>
+
+            <el-divider/>
+
+            <el-row class="overview-1-row">
+              <el-col :span="12">
+                <el-row class="overview-1-sub-header healthy-color">
+                  <i class="el-icon-success"/>
+                  <strong>{{ overview1Info.healthyApps }}</strong>
+                </el-row>
+
+                <el-row class="overview-1-sub-body healthy-color">
+                  <strong>Healthy</strong>
+                </el-row>
+              </el-col>
+              <el-col :span="12">
+                <el-row class="overview-1-sub-header down-color">
+                  <i class="el-icon-error"/>
+                  <strong>{{ overview1Info.downApps }}</strong>
+                </el-row>
+
+                <el-row class="overview-1-sub-body down-color">
+                  <strong>Down</strong>
+                </el-row>
+              </el-col>
+            </el-row>
           </el-card>
         </el-col>
 
-        <el-col :span="8">
-          <el-card shadow="hover" class="inner-card">
-            TO-DO: Overview 2
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card overview-info">
+            <el-row>
+              <el-progress
+              type="dashboard"
+              color="#E6A23C"
+              :percentage="overview2Info.dashboardPercentage"
+              :width="200"
+              :stroke-width="20"/>
+            </el-row>
+            <el-row>
+              <strong style="font-size: 18px">
+                {{ overview2Info.totalDeployed }} out of {{ overview2Info.totalStudents }} students have deployed
+              </strong>
+            </el-row>
           </el-card>
         </el-col>
 
-        <el-col :span="8">
+        <el-col :span="6">
           <el-card shadow="hover" class="inner-card">
             TO-DO: Overview 3
           </el-card>
@@ -30,7 +76,7 @@
         <el-col :span="24">
           <el-card shadow="hover" class="inner-card">
             <el-tabs type="card">
-              <el-tab-pane v-for="course in courseList" :key="course.label" :label="course.label">
+              <el-tab-pane v-for="course in serverList" :key="course.label" :label="course.label">
                 <el-table
                   :data="course.data"
                   fit
@@ -139,21 +185,47 @@
 
 <script>
 import { serverList } from './serverInfo.js'
+import { studentList } from '../student/studentInfo.js'
 
 export default {
   name: 'Server_Management',
   data () {
     return {
       profile: '',
-      courseList: []
+      serverList: [],
+      overview1Info: {
+        totalApps: 0,
+        healthyApps: 0,
+        downApps: 0
+      },
+      overview2Info: {
+        dashboardPercentag: 0,
+        totalDeployed: 0,
+        totalStudents: 0
+      }
     }
   },
   created () {
-    console.log(this.$route.params)
     this.profile = this.$route.params
-    this.courseList = serverList
+    this.serverList = serverList
+    this.computeOverview1()
+    this.computeOverview2()
   },
   methods: {
+    computeOverview1 () {
+      this.serverList.forEach(course => {
+        course.data.forEach(datapoint => {
+          this.overview1Info.totalApps += 1
+          if (datapoint.applicationStatus === 'Healthy') { this.overview1Info.healthyApps += 1 }
+          if (datapoint.applicationStatus === 'Down') { this.overview1Info.downApps += 1 }
+        })
+      })
+    },
+    computeOverview2 () {
+      this.overview2Info.dashboardPercentage = parseInt(this.overview1Info.totalApps / studentList.length * 100)
+      this.overview2Info.totalDeployed = this.overview1Info.totalApps
+      this.overview2Info.totalStudents = studentList.length
+    },
     route (location, params) {
       var pageName = 'Cloud_Profile'
       var pageUrl = '/server/management'
@@ -189,5 +261,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.overview-info {
+  text-align: center;
+}
+.overview-1-row {
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+.overview-1-header {
+  margin-bottom: 10px;
+  font-size: 50px;
+}
+.overview-1-body {
+  font-size: 20px;
+}
+.overview-1-sub-header {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+.overview-1-sub-body {
+  font-size: 18px;
+}
+.healthy-color {
+  color: #67C23A;
+}
+.down-color {
+  color: #F56C6C;
+}
 </style>
