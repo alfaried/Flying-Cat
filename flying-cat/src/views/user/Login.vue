@@ -83,6 +83,13 @@ export default {
             this.$router.push({
               path: '/overview'
             })
+          } else {
+            this.$notify({
+              title: 'Warning',
+              dangerouslyUseHTMLString: true,
+              message: 'This is a prototype, use username: <b>admin</b> and password: <b>admin</b> to access the system.',
+              type: 'warning'
+            })
           }
         }
       })
