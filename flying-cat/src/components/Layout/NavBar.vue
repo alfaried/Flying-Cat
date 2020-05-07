@@ -25,7 +25,7 @@
           <i class="el-icon-s-order white sub-item"></i>
           <span class="sub-item">Management</span>
         </el-menu-item>
-        <el-menu-item class="sub-item" index="/student/analytics">
+        <el-menu-item class="sub-item" index="/student/analytics" disabled>
           <i class="el-icon-s-data white"></i>
           <span>Analytics</span>
         </el-menu-item>
@@ -40,7 +40,7 @@
           <i class="el-icon-s-order white"></i>
           <span>Management</span>
         </el-menu-item>
-        <el-menu-item class="sub-item" index="/course/analytics">
+        <el-menu-item class="sub-item" index="/course/analytics" disabled>
           <i class="el-icon-s-data white"></i>
           <span>Analytics</span>
         </el-menu-item>
