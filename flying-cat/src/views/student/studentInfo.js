@@ -228,6 +228,75 @@ const studentList = [{
   trailhead_profile: 'laosaiLi',
   status: 'Offline',
   progress: '30'
+}, {
+  salutation: 'mr.',
+  course_code: 'ESM240',
+  course_name: 'Enterprise Solution Management',
+  course_desc: '-',
+  section: 'G1',
+  team: 'T3',
+  metric_number: '01238794',
+  name: {
+    full: 'Mambuk Madi',
+    first: 'Mambuk',
+    last: 'Madi'
+  },
+  email: 'mambuk.madi.2015@smu.edu.sg',
+  nric: 'S9667554J',
+  gender: 'm',
+  address: '123 ABC Street, #01-51, S900123',
+  countryCode: '65',
+  mobileNumber: '82323455',
+  cloud_profile: 'AWS-746503729578',
+  trailhead_profile: 'mambukMadi',
+  status: 'Online',
+  progress: '48'
+}, {
+  salutation: 'mr.',
+  course_code: 'ESM240',
+  course_name: 'Enterprise Solution Management',
+  course_desc: '-',
+  section: 'G1',
+  team: 'T3',
+  metric_number: '01114563',
+  name: {
+    full: 'Slitva Danugaranan',
+    first: 'Slitva',
+    last: 'Danugaranan'
+  },
+  email: 'slitva.danugaranan.2015@smu.edu.sg',
+  nric: 'S9617773K',
+  gender: 'F',
+  address: '123 ABC Street, #01-51, S900123',
+  countryCode: '65',
+  mobileNumber: '90578816',
+  cloud_profile: 'AWS-628394017485',
+  trailhead_profile: 'slitvaDanugaranan',
+  status: 'Online',
+  progress: '58'
+}, {
+  salutation: 'mr.',
+  course_code: 'ESM240',
+  course_name: 'Enterprise Solution Management',
+  course_desc: '-',
+  section: 'G1',
+  team: 'T3',
+  metric_number: '01114563',
+  name: {
+    full: 'Lavita Singh',
+    first: 'Lavita',
+    last: 'Singh'
+  },
+  email: 'lavita.singh.2016@smu.edu.sg',
+  nric: 'G9511233L',
+  gender: 'F',
+  address: '123 ABC Street, #01-51, S900123',
+  countryCode: '65',
+  mobileNumber: '87906654',
+  cloud_profile: 'AWS-628394017485',
+  trailhead_profile: 'lavitaSingh',
+  status: 'Offline',
+  progress: '65'
 }]
 
 export { studentList }

@@ -385,7 +385,7 @@ export default {
       this.generalForm = JSON.parse(JSON.stringify(this.generalFormCopy))
       this.$notify.info({
         title: 'Info',
-        message: 'General Information form has be resetted.',
+        message: 'General Information form has be resetted.'
       })
     },
     updatePersonal () {
@@ -401,7 +401,7 @@ export default {
       this.personalForm = JSON.parse(JSON.stringify(this.personalFormCopy))
       this.$notify.info({
         title: 'Info',
-        message: 'Personal Information form has be resetted.',
+        message: 'Personal Information form has be resetted.'
       })
     }
   }
