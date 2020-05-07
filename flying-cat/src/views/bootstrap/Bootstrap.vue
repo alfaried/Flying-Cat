@@ -263,7 +263,7 @@ export default {
       }
       this.$notify.info({
         title: 'Info',
-        message: 'Add Student form has be cleared.',
+        message: 'Add Student form has be cleared.'
       })
     },
     addCourse () {
@@ -284,7 +284,7 @@ export default {
       }
       this.$notify.info({
         title: 'Info',
-        message: 'Add Course form has be cleared.',
+        message: 'Add Course form has be cleared.'
       })
     }
   }
