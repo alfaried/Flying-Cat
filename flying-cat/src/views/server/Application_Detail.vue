@@ -1,7 +1,7 @@
 <template>
   <div class="course-analytics-main">
     <el-row style="margin-bottom: 20px;">
-      <h1>Server Management</h1>
+      <h1>Application Detail</h1>
       <el-divider content-position="left"><h2>Application IP: <b>{{ applicationIP }}</b></h2></el-divider>
     </el-row>
 
@@ -59,6 +59,7 @@ export default {
   },
   methods: {
     route () {
+      this.$activeNavBarIndex = '/server/management'
       this.$router.push({
         name: 'Application_Management'
       })

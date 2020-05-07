@@ -12,7 +12,7 @@ import courseManagement from '@/views/course/Course_Management'
 import courseAnalytics from '@/views/course/Course_Analytics'
 
 import applicationManagement from '@/views/server/Application_Management'
-import serverManagement from '@/views/server/Server_Management'
+import applicationDetail from '@/views/server/Application_Detail'
 import cloudProfile from '@/views/server/Cloud_Profile'
 
 import trailheadProfile from '@/views/trailhead/Trailhead_Profile'
@@ -68,8 +68,8 @@ export default new Router({
     },
     {
       path: '/server/management/:applicationIP',
-      name: 'Server_Management',
-      component: serverManagement,
+      name: 'Application_Detail',
+      component: applicationDetail,
       props: true
     },
     {

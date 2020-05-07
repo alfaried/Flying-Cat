@@ -120,7 +120,7 @@
       <el-row :gutter="20">
         <el-col :span="24">
           <el-card shadow="hover" class="inner-card">
-            <el-tabs v-model="activeTabIndex" type="card" @tab-click="handleClick">
+            <el-tabs v-model="activeTabIndex" type="card" @tab-click="handleTabClick">
               <el-tab-pane v-for="course in serverList" :key="course.label" :label="course.label">
                 <el-table
                   :data="course.data"
@@ -276,6 +276,9 @@ export default {
     })
   },
   methods: {
+    handleTabClick (clickedTab) {
+      console.log(clickedTab)
+    },
     computeOverview1 () {
       this.serverList.forEach(course => {
         course.data.forEach(datapoint => {
@@ -320,7 +323,7 @@ export default {
       var pageUrl = '/server/management'
 
       if (location === 'app') {
-        pageName = 'Server_Management'
+        pageName = 'Application_Detail'
       } else if (location === 'website') {
         console.log('Go to Website')
         this.$notify({
