@@ -297,6 +297,10 @@ export default {
         countryCodeHome: '',
         homeNumber: ''
       }
+      this.$notify.info({
+        title: 'Info',
+        message: 'Profile form has be resetted.',
+      })
     }
   }
 }

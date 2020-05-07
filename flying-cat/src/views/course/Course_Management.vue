@@ -171,6 +171,10 @@ export default {
     },
     reset () {
       this.fetchData()
+      this.$notify.info({
+        title: 'Info',
+        message: 'Course Information form has be resetted.',
+      })
     },
     remove () {
       console.log('Remove Select Course')

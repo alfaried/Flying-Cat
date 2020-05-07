@@ -383,6 +383,10 @@ export default {
     resetGeneral () {
       console.log('Reset General Information')
       this.generalForm = JSON.parse(JSON.stringify(this.generalFormCopy))
+      this.$notify.info({
+        title: 'Info',
+        message: 'General Information form has be resetted.',
+      })
     },
     updatePersonal () {
       console.log('Update Personal Information')
@@ -395,6 +399,10 @@ export default {
     resetPersonal () {
       console.log('Reset Personal Information')
       this.personalForm = JSON.parse(JSON.stringify(this.personalFormCopy))
+      this.$notify.info({
+        title: 'Info',
+        message: 'Personal Information form has be resetted.',
+      })
     }
   }
 }

@@ -261,6 +261,10 @@ export default {
         team: '',
         metricNumber: ''
       }
+      this.$notify.info({
+        title: 'Info',
+        message: 'Add Student form has be cleared.',
+      })
     },
     addCourse () {
       console.log('add course')
@@ -278,6 +282,10 @@ export default {
         description: '',
         nummOfSections: 1
       }
+      this.$notify.info({
+        title: 'Info',
+        message: 'Add Course form has be cleared.',
+      })
     }
   }
 }
