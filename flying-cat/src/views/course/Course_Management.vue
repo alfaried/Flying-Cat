@@ -173,7 +173,7 @@ export default {
       this.fetchData()
       this.$notify.info({
         title: 'Info',
-        message: 'Course Information form has be resetted.',
+        message: 'Course Information form has be resetted.'
       })
     },
     remove () {
