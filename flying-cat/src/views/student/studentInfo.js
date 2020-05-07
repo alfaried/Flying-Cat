@@ -1,5 +1,4 @@
-const studentList = [
-{
+const studentList = [{
   salutation: 'mr.',
   course_code: 'ESM240',
   course_name: 'Enterprise Solution Management',
