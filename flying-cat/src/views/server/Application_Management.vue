@@ -72,7 +72,7 @@
                     align="center"
                     width="250">
                     <template slot-scope="scope">
-                      <el-button type="text" @click="route('profile', scope.row.cloudProfile)">{{ scope.row.cloudProfile }}</el-button>
+                      <el-button type="text" @click="route('profile', scope.row.cloudProfile)"><u>{{ scope.row.cloudProfile }}</u></el-button>
                     </template>
                   </el-table-column>
                   <el-table-column
@@ -82,7 +82,7 @@
                     align="center"
                     width="250">
                     <template slot-scope="scope">
-                      <el-button type="text" @click="route('website', scope.row.applicationIP)">{{ scope.row.applicationIP }}</el-button>
+                      <el-button type="text" @click="route('website', scope.row.applicationIP)"><u>{{ scope.row.applicationIP }}</u></el-button>
                     </template>
                   </el-table-column>
                   <el-table-column

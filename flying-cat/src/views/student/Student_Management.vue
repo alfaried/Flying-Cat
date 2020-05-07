@@ -62,7 +62,7 @@
                 align="center"
                 width="300">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="route('server', scope.row.cloud_profile)">{{ scope.row.cloud_profile }}</el-button>
+                  <el-button type="text" @click="route('server', scope.row.cloud_profile)"><u>{{ scope.row.cloud_profile }}</u></el-button>
                 </template>
               </el-table-column>
               <!-- Leads to Trialhead profile page -->
@@ -73,7 +73,7 @@
                 align="center"
                 width="250">
                 <template slot-scope="scope">
-                  <el-button type="text" @click="route('trailhead', scope.row.trailhead_profile)">{{ scope.row.trailhead_profile }}</el-button>
+                  <el-button type="text" @click="route('trailhead', scope.row.trailhead_profile)"><u>{{ scope.row.trailhead_profile }}</u></el-button>
                 </template>
               </el-table-column>
               <!-- Online or Offline -->
