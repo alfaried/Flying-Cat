@@ -33,6 +33,7 @@
                   <strong>Healthy</strong>
                 </el-row>
               </el-col>
+
               <el-col :span="12">
                 <el-row class="overview-1-sub-header down-color">
                   <i class="el-icon-error"/>
@@ -68,6 +69,12 @@
         <el-col :span="6">
           <el-card shadow="hover" class="inner-card">
             TO-DO: Overview 3
+          </el-card>
+        </el-col>
+
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card">
+            TO-DO: Overview 4
           </el-card>
         </el-col>
       </el-row>
@@ -158,6 +165,9 @@
                     header-align="center"
                     align="center"
                     width="150">
+                    <template slot-scope="scope">
+                      {{ scope.row.applicationUsage }} %
+                    </template>
                   </el-table-column>
                   <!-- To view the server -->
                   <el-table-column
