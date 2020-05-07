@@ -9,48 +9,7 @@
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="6">
           <el-card shadow="hover" class="inner-card overview-info">
-            <el-row class="overview-1-row">
-              <el-row class="overview-1-header">
-                <i class="el-icon-s-platform"/>
-                <strong>{{ overview1Info.totalApps }}</strong>
-              </el-row>
-
-              <el-row class="overview-1-body">
-                <strong>Deployed Apps</strong>
-              </el-row>
-            </el-row>
-
-            <el-divider/>
-
-            <el-row class="overview-1-row">
-              <el-col :span="12">
-                <el-row class="overview-1-sub-header healthy-color">
-                  <i class="el-icon-success"/>
-                  <strong>{{ overview1Info.healthyApps }}</strong>
-                </el-row>
-
-                <el-row class="overview-1-sub-body healthy-color">
-                  <strong>Healthy</strong>
-                </el-row>
-              </el-col>
-
-              <el-col :span="12">
-                <el-row class="overview-1-sub-header down-color">
-                  <i class="el-icon-error"/>
-                  <strong>{{ overview1Info.downApps }}</strong>
-                </el-row>
-
-                <el-row class="overview-1-sub-body down-color">
-                  <strong>Down</strong>
-                </el-row>
-              </el-col>
-            </el-row>
-          </el-card>
-        </el-col>
-
-        <el-col :span="6">
-          <el-card shadow="hover" class="inner-card overview-info">
-            <el-row>
+            <el-row style="font-weight: bolder;">
               <el-progress
               type="dashboard"
               color="#E6A23C"
@@ -68,18 +27,87 @@
 
         <el-col :span="6">
           <el-card shadow="hover" class="inner-card overview-info">
+            <el-row class="overview-1-row">
+              <el-row class="overview-1-header">
+                <i class="el-icon-s-platform"/>
+                <strong>{{ overview1Info.totalApps }}</strong>
+              </el-row>
+
+              <el-row class="overview-1-body">
+                <strong>Deployed Apps</strong>
+              </el-row>
+            </el-row>
+            <br>
+            <el-row>
+              <el-card shadow="never">
+                <el-row>
+                  <el-col :span="12">
+                    <el-row class="overview-1-sub-header healthy-color">
+                      <i class="el-icon-success"/>
+                      <strong>{{ overview1Info.healthyApps }}</strong>
+                    </el-row>
+
+                    <el-row class="overview-1-sub-body healthy-color">
+                      <strong>Healthy</strong>
+                    </el-row>
+                  </el-col>
+
+                  <el-col :span="12">
+                    <el-row class="overview-1-sub-header down-color">
+                      <i class="el-icon-error"/>
+                      <strong>{{ overview1Info.downApps }}</strong>
+                    </el-row>
+
+                    <el-row class="overview-1-sub-body down-color">
+                      <strong>Down</strong>
+                    </el-row>
+                  </el-col>
+                </el-row>
+              </el-card>
+            </el-row>
+          </el-card>
+        </el-col>
+
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card overview-info">
+            <el-row class="overview-1-row">
+              <el-row class="overview-1-header">
+                <strong>{{ overview4Info.totalUniqueTeams }}</strong>
+                <i class="el-icon-s-custom"/>
+              </el-row>
+
+              <el-row class="overview-1-body">
+                <strong>Unique Teams</strong>
+              </el-row>
+            </el-row>
+            <br>
+            <el-row>
+              <el-card shadow="never">
+                <el-row class="wrapper-padding">
+                    <el-col
+                      v-for="(count, team) in overview4Info.uniqueTeamArray"
+                      :key="team"
+                      :span="24/overview4Info.totalUniqueTeams">
+                      <el-badge :value="count" type="success">
+                        <el-tag style="font-size: 15px; font-weight: bolder;" type="info">
+                          {{ team }}
+                        </el-tag>
+                      </el-badge>
+                    </el-col>
+                </el-row>
+              </el-card>
+            </el-row>
+          </el-card>
+        </el-col>
+
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card overview-info">
             <el-row class="overview-3-header">
               {{ overview3Info.averagelUsageAmount }} %
             </el-row>
             <el-row class="overview-body">
               <strong>Average Application Usage</strong>
             </el-row>
-          </el-card>
-        </el-col>
-
-        <el-col :span="6">
-          <el-card shadow="hover" class="inner-card">
-            TO-DO: Overview 4
           </el-card>
         </el-col>
       </el-row>
@@ -138,7 +166,7 @@
                     label="Application IP"
                     header-align="center"
                     align="center"
-                    width="250">
+                    width="230">
                     <template slot-scope="scope">
                       <el-button type="text" @click="route('website', scope.row.applicationIP)"><u>{{ scope.row.applicationIP }}</u></el-button>
                     </template>
@@ -221,6 +249,10 @@ export default {
       overview3Info: {
         totalUsageAmount: 0,
         averagelUsageAmount: 0
+      },
+      overview4Info: {
+        totalUniqueTeams: 0,
+        uniqueTeamArray: {}
       }
     }
   },
@@ -230,6 +262,8 @@ export default {
     this.computeOverview1()
     this.computeOverview2()
     this.computeOverview3()
+    this.computeOverview4()
+    console.log(this.overview4Info)
   },
   methods: {
     computeOverview1 () {
@@ -257,6 +291,19 @@ export default {
       })
       this.overview3Info.totalUsageAmount = total
       this.overview3Info.averagelUsageAmount = (total / count).toFixed(2)
+    },
+    computeOverview4 () {
+      this.serverList.forEach(course => {
+        course.data.forEach(datapoint => {
+          var team = datapoint.team
+          if (team in this.overview4Info.uniqueTeamArray) {
+            this.overview4Info.uniqueTeamArray[team] += 1
+          } else {
+            this.overview4Info.uniqueTeamArray[team] = 1
+            this.overview4Info.totalUniqueTeams += 1
+          }
+        })
+      })
     },
     route (location, params) {
       var pageName = 'Cloud_Profile'
@@ -303,6 +350,7 @@ export default {
 .overview-1-header {
   margin-bottom: 10px;
   font-size: 50px;
+  color: #606266;
 }
 .overview-1-body {
   font-size: 20px;
@@ -323,10 +371,15 @@ export default {
 .overview-3-header {
   font-size: 80px;
   font-weight: bolder;
+  color: #606266;
   padding-top: 57px;
   padding-bottom: 57px;
 }
 .overview-body {
   font-size: 20px;
+}
+.wrapper-padding {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 </style>
