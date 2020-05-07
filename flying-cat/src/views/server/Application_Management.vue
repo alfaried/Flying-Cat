@@ -6,6 +6,11 @@
     </el-row>
 
     <el-card>
+      <div class="card-header" slot="header">
+        <i class="el-icon-collection"></i>
+        <span>{{ courseListRef[serverList[parseInt(activeTabIndex)].label] }}</span>
+      </div>
+
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="6">
           <el-card shadow="hover" class="inner-card overview-info">
@@ -115,7 +120,7 @@
       <el-row :gutter="20">
         <el-col :span="24">
           <el-card shadow="hover" class="inner-card">
-            <el-tabs type="card">
+            <el-tabs v-model="activeTabIndex" type="card" @tab-click="handleClick">
               <el-tab-pane v-for="course in serverList" :key="course.label" :label="course.label">
                 <el-table
                   :data="course.data"
@@ -229,11 +234,13 @@
 <script>
 import { serverList } from './serverInfo.js'
 import { studentList } from '../student/studentInfo.js'
+import { courseList } from '../course/courseInfo.js'
 
 export default {
   name: 'Server_Management',
   data () {
     return {
+      activeTabIndex: 0,
       profile: '',
       serverList: [],
       overview1Info: {
@@ -253,7 +260,8 @@ export default {
       overview4Info: {
         totalUniqueTeams: 0,
         uniqueTeamArray: {}
-      }
+      },
+      courseListRef: {}
     }
   },
   created () {
@@ -263,7 +271,9 @@ export default {
     this.computeOverview2()
     this.computeOverview3()
     this.computeOverview4()
-    console.log(this.overview4Info)
+    courseList.forEach(courseInfo => {
+      this.courseListRef[courseInfo.courseCode] = courseInfo.courseName
+    })
   },
   methods: {
     computeOverview1 () {
