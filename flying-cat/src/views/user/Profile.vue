@@ -299,7 +299,7 @@ export default {
       }
       this.$notify.info({
         title: 'Info',
-        message: 'Profile form has be resetted.',
+        message: 'Profile form has be resetted.'
       })
     }
   }
