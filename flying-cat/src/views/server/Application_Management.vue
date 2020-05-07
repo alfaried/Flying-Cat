@@ -59,16 +59,21 @@
               :stroke-width="20"/>
             </el-row>
             <el-row>
-              <strong style="font-size: 18px">
-                {{ overview2Info.totalDeployed }} out of {{ overview2Info.totalStudents }} students have deployed
+              <strong class="overview-body">
+                {{ overview2Info.totalDeployed }} out of {{ overview2Info.totalStudents }} students deployed
               </strong>
             </el-row>
           </el-card>
         </el-col>
 
         <el-col :span="6">
-          <el-card shadow="hover" class="inner-card">
-            TO-DO: Overview 3
+          <el-card shadow="hover" class="inner-card overview-info">
+            <el-row class="overview-3-header">
+              {{ overview3Info.averagelUsageAmount }} %
+            </el-row>
+            <el-row class="overview-body">
+              <strong>Average Application Usage</strong>
+            </el-row>
           </el-card>
         </el-col>
 
@@ -212,6 +217,10 @@ export default {
         dashboardPercentag: 0,
         totalDeployed: 0,
         totalStudents: 0
+      },
+      overview3Info: {
+        totalUsageAmount: 0,
+        averagelUsageAmount: 0
       }
     }
   },
@@ -220,6 +229,7 @@ export default {
     this.serverList = serverList
     this.computeOverview1()
     this.computeOverview2()
+    this.computeOverview3()
   },
   methods: {
     computeOverview1 () {
@@ -235,6 +245,18 @@ export default {
       this.overview2Info.dashboardPercentage = parseInt(this.overview1Info.totalApps / studentList.length * 100)
       this.overview2Info.totalDeployed = this.overview1Info.totalApps
       this.overview2Info.totalStudents = studentList.length
+    },
+    computeOverview3 () {
+      var count = 0
+      var total = 0
+      this.serverList.forEach(course => {
+        course.data.forEach(datapoint => {
+          total += datapoint.applicationUsage
+          count += 1
+        })
+      })
+      this.overview3Info.totalUsageAmount = total
+      this.overview3Info.averagelUsageAmount = (total / count).toFixed(2)
     },
     route (location, params) {
       var pageName = 'Cloud_Profile'
@@ -297,5 +319,14 @@ export default {
 }
 .down-color {
   color: #F56C6C;
+}
+.overview-3-header {
+  font-size: 80px;
+  font-weight: bolder;
+  padding-top: 57px;
+  padding-bottom: 57px;
+}
+.overview-body {
+  font-size: 20px;
 }
 </style>
