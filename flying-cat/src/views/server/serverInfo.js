@@ -1,3 +1,20 @@
+const serviceInfoList = {
+  'i-02901c2e26147bd43': {
+    name: 'Flying_Cat',
+    type: 't2.micro',
+    attachment: 'vol-0f3b15eadda932ae3',
+    addInfo1: '13.228.95.141',
+    addInfo2: 'ec2-13-228-95-141.ap-southeast-1.compute.amazonaws.com'
+  },
+  'vol-0f3b15eadda932ae3': {
+    name: 'Flying_Cat',
+    type: 'gp2',
+    attachment: 'i-02901c2e26147bd43',
+    addInfo1: '10 GiB',
+    addInfo2: 'snap-045105f8acab4971f'
+  }
+}
+
 const cloudProfileData = {
   'AWS-233703087823': {
     accountCategory: 'Student',
@@ -5,18 +22,28 @@ const cloudProfileData = {
     accountEmail: 'alfariedy.2016@smu.edu.sg',
     serviceList: [
       {
+        serviceID: 'i-02901c2e26147bd43',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
         serviceRegion: 'Singapore',
-        serviceZone: 'ap-southeast-1a'
+        serviceZone: 'ap-southeast-1c'
       },
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
-        serviceHealth: 'Available',
+        serviceHealth: 'Unavailable',
         serviceRegion: 'Singapore',
         serviceZone: 'ap-southeast-1b'
+      },
+      {
+        serviceID: 'vol-0f3b15eadda932ae3',
+        serviceType: 'Storage',
+        serviceName: 'ebs-storage',
+        serviceHealth: 'Available',
+        serviceRegion: 'Singapore',
+        serviceZone: 'ap-southeast-1c'
       }
     ]
   },
@@ -26,6 +53,7 @@ const cloudProfileData = {
     accountEmail: 'alfred.peng.2017@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -40,6 +68,7 @@ const cloudProfileData = {
     accountEmail: 'melvin.ng.2016@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -54,6 +83,7 @@ const cloudProfileData = {
     accountEmail: 'fredrick.tan.2016@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -68,6 +98,7 @@ const cloudProfileData = {
     accountEmail: 'sitti.aisyah.2015@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -82,6 +113,7 @@ const cloudProfileData = {
     accountEmail: 'jen.lavison.2016@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -96,6 +128,7 @@ const cloudProfileData = {
     accountEmail: 'junadi.tan.2015@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -110,6 +143,7 @@ const cloudProfileData = {
     accountEmail: 'laosai.li.2015@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -124,6 +158,7 @@ const cloudProfileData = {
     accountEmail: 'lavita.singh.2016@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -138,6 +173,7 @@ const cloudProfileData = {
     accountEmail: 'mambuk.madi.2015@smu.edu.sg',
     serviceList: [
       {
+        serviceID: '-',
         serviceType: 'Compute',
         serviceName: 'ec2-instance',
         serviceHealth: 'Available',
@@ -180,9 +216,9 @@ const serverList = [{
       team: 'T3',
       projectName: 'Alfaried_Flying_Cat_Lab',
       cloudProfile: 'AWS-233703087823',
-      applicationIP: '300.1.1.3',
-      applicationStatus: 'Down',
-      applicationUsage: 0
+      applicationIP: '13.228.95.141',
+      applicationStatus: 'Healthy',
+      applicationUsage: 2
     },
     {
       section: 'G1',
@@ -268,4 +304,4 @@ const serverList = [{
   ]
 }]
 
-export { serverList, cloudProfileData }
+export { serverList, cloudProfileData, serviceInfoList }

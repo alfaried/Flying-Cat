@@ -8,7 +8,7 @@
     <el-card>
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="6">
-          <el-button type="warning" @click="route" plain>
+          <el-button type="warning" @click="route(null, null)" plain>
             <i class="el-icon-back"/>
             <span>Back to Application Management</span>
           </el-button>
@@ -60,7 +60,6 @@
                 </el-row>
               </el-form>
             </div>
-            <br><br><br>
           </el-card>
         </el-col>
 
@@ -78,7 +77,7 @@
                 fit
                 stripe
                 border
-                height="335px"
+                height="275px"
                 @selection-change="handleSelectionChange"
                 @cell-click="handleCellClick">
                 <el-table-column
@@ -88,13 +87,20 @@
                   width="50">
                 </el-table-column>
                 <el-table-column
+                  property="serviceID"
+                  label="Service ID"
+                  header-align="center"
+                  align="center"
+                  width="200">
+                </el-table-column>
+                <el-table-column
                   property="serviceType"
                   label="Service Type"
                   header-align="center"
                   align="center"
                   width="160"
                   column-key="serviceType"
-                  :filters="[{text: 'Compute', value: 'Compute'}, {text: 'Storage', value: 'Storage'}, {text: 'Security', value: 'Security'}, {text: 'Network', value: 'Network'}]"
+                  :filters="[{text: 'Compute', value: 'Compute'}, {text: 'Storage', value: 'Storage'}, {text: 'Security', value: 'Security'}, {text: 'Network', value: 'Network'}, {text: 'Others', value: 'Others'}]"
                   :filter-method="filterHandler">
                 </el-table-column>
                 <el-table-column
@@ -102,7 +108,7 @@
                   label="Service Name"
                   header-align="center"
                   align="center"
-                  width="250">
+                  width="200">
                 </el-table-column>
                 <el-table-column
                   property="serviceHealth"
@@ -163,7 +169,54 @@
             </div>
 
             <div class="card-body">
-              TO-DO
+              <el-form :model="serviceInfoForm" ref="serviceInfoForm" class="card-form" label-position="top">
+                <el-row :gutter="40">
+                  <el-col :span="6">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Instance ID' : serviceInfoForm.serviceType === 'Storage' ? 'Volume ID' : '-'">
+                      <el-input v-model="serviceInfoForm.id" disabled/>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Instance Name' : serviceInfoForm.serviceType === 'Storage' ? 'Volume Name' : '-'">
+                      <el-input v-model="serviceInfoForm.name" disabled/>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Instance Type' : serviceInfoForm.serviceType === 'Storage' ? 'Volume Type' : '-'">
+                      <el-input v-model="serviceInfoForm.type" disabled/>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="6">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Volume ID' : serviceInfoForm.serviceType === 'Storage' ? 'Instance ID' : '-'">
+                      <el-input v-model="serviceInfoForm.attachment" disabled/>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+
+                <el-row :gutter="40">
+                  <el-col :span="6">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Public IP' : serviceInfoForm.serviceType === 'Storage' ? 'Volume Size' : '-'">
+                      <el-input v-model="serviceInfoForm.addInfo1" disabled/>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="12">
+                    <el-form-item :label="serviceInfoForm.serviceType === 'Compute' ? 'Public DNS' : serviceInfoForm.serviceType === 'Storage' ? 'Snapshot ID' : '-'">
+                      <el-input v-model="serviceInfoForm.addInfo2" disabled/>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+
+                <el-row :gutter="40">
+                  <el-col :span="6">
+                    <el-form-item class="card-button">
+                      <el-button type="primary" @click="route('service', serviceInfoForm.id)" :disabled="serviceInfoForm.id === ''" plain>
+                        <i class="el-icon-view"></i>
+                        <span>View More</span>
+                      </el-button>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
             </div>
           </el-card>
         </el-col>
@@ -173,7 +226,7 @@
 </template>
 
 <script>
-import { cloudProfileData } from './serverInfo.js'
+import { cloudProfileData, serviceInfoList } from './serverInfo.js'
 
 export default {
   name: 'Cloud_Profile',
@@ -187,20 +240,23 @@ export default {
         accountEmail: ''
       },
       tableData: [],
-      tableSelection: []
+      tableSelection: [],
+      serviceInfoForm: { id: '' }
     }
   },
   created () {
     this.cloudProfile = this.$route.params.profileID
     this.fetchData()
-    console.log(this.tableData)
   },
   methods: {
-    handleCellClick () {
-      this.$notify.info({
-        title: 'Info',
-        message: 'TO-DO: Cell click reveal service information'
-      })
+    handleCellClick (row, column, event) {
+      if (row.serviceID === '-') {
+        this.serviceInfoForm = { id: '' }
+      } else {
+        this.serviceInfoForm = serviceInfoList[row.serviceID]
+        this.serviceInfoForm.id = row.serviceID
+        this.serviceInfoForm.serviceType = row.serviceType
+      }
     },
     stopServices () {
       console.log('Stop Services')
@@ -240,11 +296,19 @@ export default {
       this.cloudProfileForm.accountCategory = cloudProfileData[this.cloudProfile].accountCategory
       this.tableData = cloudProfileData[this.cloudProfile].serviceList
     },
-    route () {
-      this.$activeNavBarIndex = '/server/management'
-      this.$router.push({
-        name: 'Application_Management'
-      })
+    route (location, params) {
+      if (location === 'service') {
+        this.$activeNavBarIndex = '/server/management'
+        this.$router.push({
+          name: 'Service_Detail',
+          params: { serviceID: params, profileID: this.cloudProfile }
+        })
+      } else {
+        this.$activeNavBarIndex = '/server/management'
+        this.$router.push({
+          name: 'Application_Management'
+        })
+      }
     }
   }
 }
@@ -252,6 +316,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.card-button {
+  float: left;
+  padding-top: 20px;
+}
 .card-form {
   padding: 20px;
 }
