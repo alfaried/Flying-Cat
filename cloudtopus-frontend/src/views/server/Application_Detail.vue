@@ -7,10 +7,16 @@
 
     <el-card>
       <el-row :gutter="20" style="margin-bottom: 20px;">
-        <el-col :span="6">
-          <el-button type="warning" @click="route" plain>
+        <el-col :span="12">
+          <el-button style="float: left;" type="warning" @click="route" plain>
             <i class="el-icon-back"/>
             <span>Back to Application Management</span>
+          </el-button>
+        </el-col>
+        <el-col :span="12">
+          <el-button style="float: right;" type="primary" @click="route('website', applicationIP)" plain>
+            <span>Go to Deployed Application Website</span>
+            <i class="el-icon-right"/>
           </el-button>
         </el-col>
       </el-row>
@@ -58,11 +64,21 @@ export default {
     this.applicationIP = this.$route.params.applicationIP
   },
   methods: {
-    route () {
-      this.$activeNavBarIndex = '/server/management'
-      this.$router.push({
-        name: 'Application_Management'
-      })
+    route (location, params) {
+      if (location === 'website') {
+        // var url = 'https://trailblazer.me/id/' + params
+        // window.open(url)
+        this.$notify({
+          title: 'Warning',
+          message: 'This is a prototype, IP address ' + params + ' does not exists.',
+          type: 'warning'
+        })
+      } else {
+        this.$activeNavBarIndex = '/server/management'
+        this.$router.push({
+          name: 'Application_Management'
+        })
+      }
     }
   }
 }
