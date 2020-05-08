@@ -14,6 +14,7 @@ import courseAnalytics from '@/views/course/Course_Analytics'
 import applicationManagement from '@/views/server/Application_Management'
 import applicationDetail from '@/views/server/Application_Detail'
 import cloudProfile from '@/views/server/Cloud_Profile'
+import serviceDetail from '@/views/server/Service_Detail.'
 
 import trailheadProfile from '@/views/trailhead/Trailhead_Profile'
 
@@ -76,6 +77,12 @@ export default new Router({
       path: '/server/management/:profileID',
       name: 'Cloud_Profile',
       component: cloudProfile,
+      props: true
+    },
+    {
+      path: '/server/management/:profileID/:serviceID',
+      name: 'Service_Detail',
+      component: serviceDetail,
       props: true
     },
     {
