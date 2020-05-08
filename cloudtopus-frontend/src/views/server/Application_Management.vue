@@ -334,17 +334,10 @@ export default {
         return null
       }
 
-      this.$confirm('Go to ' + pageName.split('_').join(' ') + ' page ?', 'Confirm', {
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'Cancel'
-      }).then(() => {
-        this.$activeNavBarIndex = pageUrl
-        this.$router.push({
-          name: pageName,
-          params: { profileID: params, applicationIP: params }
-        })
-      }).catch(() => {
-        // Do nothing
+      this.$activeNavBarIndex = pageUrl
+      this.$router.push({
+        name: pageName,
+        params: { profileID: params, applicationIP: params }
       })
     }
   }
