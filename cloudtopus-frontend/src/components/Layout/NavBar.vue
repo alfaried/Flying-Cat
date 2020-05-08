@@ -51,7 +51,7 @@
         <span>Servers</span>
       </el-menu-item>
 
-      <el-menu-item class="item" index="/trailhead/management" disabled>
+      <el-menu-item class="item" index="/trailhead/management">
         <i class="el-icon-s-opportunity white"></i>
         <span>Trailheads</span>
       </el-menu-item>
