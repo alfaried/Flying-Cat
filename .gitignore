@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-flying-cat/dist/
+cloudtopus-frontend/dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -1,4 +1,4 @@
-# Flying-Cat
+# Cloudtopus-Frontend
 
 > Placeholder Application for Deployment Testing
 
@@ -6,7 +6,7 @@
 
 ``` bash
 # go into the project directory folder
-cd flying-cat
+cd cloudtopus-frontend
 
 # install dependencies
 npm install
