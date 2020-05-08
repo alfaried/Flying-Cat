@@ -1,6 +1,6 @@
 # Cloudtopus-Frontend
 
-> Placeholder Application for Deployment Testing
+> Cloud Management System Application Repo - Frontend and Backend
 
 ## Build Setup
 
