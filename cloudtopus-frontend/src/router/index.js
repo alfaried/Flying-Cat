@@ -16,6 +16,7 @@ import applicationDetail from '@/views/server/Application_Detail'
 import cloudProfile from '@/views/server/Cloud_Profile'
 import serviceDetail from '@/views/server/Service_Detail.'
 
+import trailheadManagement from '@/views/trailhead/Trailhead_Management'
 import trailheadProfile from '@/views/trailhead/Trailhead_Profile'
 
 Vue.use(Router)
@@ -86,8 +87,14 @@ export default new Router({
       props: true
     },
     {
+      path: '/trailhead/management',
+      name: 'Trailhead_Management',
+      component: trailheadManagement,
+      props: true
+    },
+    {
       path: '/trailhead/management/:profileID',
-      name: 'Trialhead_Profile',
+      name: 'Trailhead_Profile',
       component: trailheadProfile,
       props: true
     },
