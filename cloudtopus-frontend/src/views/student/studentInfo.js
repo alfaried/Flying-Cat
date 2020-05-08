@@ -64,7 +64,7 @@ const studentList = [{
   countryCode: '65',
   mobileNumber: '87695467',
   cloud_profile: 'AWS-0596847362893',
-  trailhead_profile: 'mlevinNg',
+  trailhead_profile: 'melvinNg',
   status: 'Online',
   progress: '55'
 }, {
@@ -156,7 +156,7 @@ const studentList = [{
   countryCode: '65',
   mobileNumber: '87769912',
   cloud_profile: 'AWS-8573947502356',
-  trailhead_profile: 'billtyTay',
+  trailhead_profile: 'billyTay',
   status: 'Online',
   progress: '67'
 }, {
