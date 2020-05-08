@@ -319,7 +319,7 @@ export default {
       return row[property] === value
     },
     route (location, params) {
-      var pageName = 'Trialhead_Management'
+      var pageName = 'Trailhead_Profile'
       var pageUrl = '/trailhead/management'
 
       if (location === 'server') {
