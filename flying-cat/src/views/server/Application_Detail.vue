@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: 'Server_Management',
+  name: 'Application_Details',
   data () {
     return {
       applicationIP: ''
