@@ -11,6 +11,51 @@ const trailheadList = [
         numBadges: 30,
         numTrails: 2
       },
+      {
+        section: 'G1',
+        team: 'T1',
+        fullName: 'Alfred Peng',
+        trailheadProfile: 'alfredPeng',
+        numPoints: 20500,
+        numBadges: 28,
+        numTrails: 2
+      },
+      {
+        section: 'G1',
+        team: 'T1',
+        fullName: 'Melvin Ng',
+        trailheadProfile: 'melvinNg',
+        numPoints: 20800,
+        numBadges: 27,
+        numTrails: 2
+      },
+      {
+        section: 'G1',
+        team: 'T1',
+        fullName: 'Fredrick Tan',
+        trailheadProfile: 'fredrickTan',
+        numPoints: 15200,
+        numBadges: 20,
+        numTrails: 1
+      },
+      {
+        section: 'G1',
+        team: 'T1',
+        fullName: 'Pei Qi',
+        trailheadProfile: 'peiQi',
+        numPoints: 18200,
+        numBadges: 22,
+        numTrails: 1
+      },
+      {
+        section: 'G1',
+        team: 'T1',
+        fullName: 'Junadi Tan',
+        trailheadProfile: 'junadiTan',
+        numPoints: 10200,
+        numBadges: 18,
+        numTrails: 1
+      }
     ]
   }
 ]
