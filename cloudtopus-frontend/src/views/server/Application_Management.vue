@@ -124,13 +124,14 @@
               <el-tab-pane v-for="course in serverList" :key="course.label" :label="course.label">
                 <el-table
                   :data="course.data"
+                  :ref="'serverListTable' + activeTabIndex"
                   fit
                   stripe
                   border
-                  height="500px">
+                  height="500px"
+                  @selection-change="handleSelection">
                   <el-table-column
-                    type="index"
-                    label="No."
+                    type="selection"
                     header-align="center"
                     align="center"
                     width="50">
@@ -222,6 +223,17 @@
                     </template>
                   </el-table-column>
                 </el-table>
+                <div style="margin-top: 20px">
+                  <el-button @click="clearTableSelection" type="warning" plain disabled>
+                    <i class="el-icon-refresh"/>
+                    <span>Clear selection</span>
+                  </el-button>
+                  <el-button @click="disruptSelected" type="danger" plain :disabled="tableSelection.length === 0">
+                    <i class="el-icon-warning-outline"/>
+                    <span v-if="tableSelection.length === serverList[activeTabIndex].data.length">Disrupt All Applications</span>
+                    <span v-else>Disrupt Selected Applications</span>
+                  </el-button>
+                </div>
               </el-tab-pane>
             </el-tabs>
           </el-card>
@@ -261,7 +273,8 @@ export default {
         totalUniqueTeams: 0,
         uniqueTeamArray: {}
       },
-      courseListRef: {}
+      courseListRef: {},
+      tableSelection: []
     }
   },
   created () {
@@ -276,6 +289,41 @@ export default {
     })
   },
   methods: {
+    handleSelection (val) {
+      this.tableSelection = val
+    },
+    clearTableSelection () {
+      console.log('Selection Cleared')
+      var tableName = 'serverListTable' + this.activeTabIndex
+      this.$refs[tableName].clearSelection()
+      this.$notify.info({
+        title: 'Info',
+        message: 'Table selection cleared.'
+      })
+    },
+    disruptSelected (type) {
+      console.log('Disrupt Applications')
+      var msg = ''
+
+      if (this.tableSelection.length === this.serverList[this.activeTabIndex].data.length) {
+        msg = 'Disrupt application for all row(s)?'
+      } else {
+        msg = 'Disrupt application for selected row(s)?'
+      }
+
+      this.$confirm(msg, 'Confirm', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel'
+      }).then(() => {
+        this.$notify({
+          title: 'Warning',
+          message: 'This is a prototype, applications selected does not exists.',
+          type: 'warning'
+        })
+      }).catch(() => {
+        // Do nothing
+      })
+    },
     handleTabClick (clickedTab) {
       console.log(clickedTab)
     },
