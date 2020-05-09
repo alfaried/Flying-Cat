@@ -4,22 +4,16 @@ from web_service.src.aws_utilities import *
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-# Global Params - Hardcodede to make the backend work
-ACCESS_KEY_ID = 'AKIAJBIMKPRCB74ST2WA'
-SECRET_ACCESS_KEY = '9oKObjBQOxSxD5I6fcNXG6LhixZhZnGCkykGoZta'
-
-# instance_id = i-02901c2e26147bd43
-
 # Create your views here.
 def index(requests):
   response = {'service_name': 'index'}
 
   response['service_list'] = {
+    'testing': 'testing/',
     'start_instance': 'start_instance/',
     'stop_instance': 'stop_instance/'
   }
 
-  # To pass any other JSON-serializable object, set safe parameter to False
   return JsonResponse(response, safe=True)
 
 
@@ -33,7 +27,6 @@ def start_instance(requests):
 
   response['Content'] = res
 
-  # To pass any other JSON-serializable object, set safe parameter to False
   return JsonResponse(response, safe=True)
 
 
@@ -47,5 +40,11 @@ def stop_instance(requests):
 
   response['Content'] = res
 
-  # To pass any other JSON-serializable object, set safe parameter to False
+  return JsonResponse(response, safe=True)
+
+def testing(requests):
+  response = {'Service_Name': 'testing'}
+
+  # Add code below for testing
+
   return JsonResponse(response, safe=True)
