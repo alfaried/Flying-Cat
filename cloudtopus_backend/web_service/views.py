@@ -22,7 +22,7 @@ def start_instance(requests):
   
   instance_id = requests.GET.get('instance_id')
 
-  client = get_ec2_client(ACCESS_KEY_ID, SECRET_ACCESS_KEY)
+  client = get_ec2_client()
   res = client.start_instances(InstanceIds=[instance_id])
 
   response['Content'] = res
@@ -35,7 +35,7 @@ def stop_instance(requests):
 
   instance_id = requests.GET.get('instance_id')
 
-  client = get_ec2_client(ACCESS_KEY_ID, SECRET_ACCESS_KEY)
+  client = get_ec2_client()
   res = client.stop_instances(InstanceIds=[instance_id])
 
   response['Content'] = res
