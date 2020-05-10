@@ -8,7 +8,7 @@
     <el-card>
       <el-row :gutter="20" style="margin-bottom: 20px;">
         <el-col :span="12">
-          <el-button style="float: left;" type="warning" @click="route" plain>
+          <el-button style="float: left;" type="warning" @click="route(null, null)" plain>
             <i class="el-icon-back"/>
             <span>Back to Application Management</span>
           </el-button>
@@ -66,13 +66,8 @@ export default {
   methods: {
     route (location, params) {
       if (location === 'website') {
-        // var url = 'https://trailblazer.me/id/' + params
-        // window.open(url)
-        this.$notify({
-          title: 'Warning',
-          message: 'This is a prototype, IP address ' + params + ' does not exists.',
-          type: 'warning'
-        })
+        var url = 'http://' + params + ':8000/'
+        window.open(url)
       } else {
         this.$activeNavBarIndex = '/server/management'
         this.$router.push({
