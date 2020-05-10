@@ -52,7 +52,7 @@
                 </el-col>
               </el-row>
             </div>
-            
+
             <br>
 
             <div class="wrapper-overview2-bottom">
@@ -94,7 +94,7 @@
                 </el-col>
               </el-row>
             </div>
-            
+
             <br>
 
             <div class="wrapper-overview2-bottom">
@@ -136,7 +136,7 @@
                 </el-col>
               </el-row>
             </div>
-            
+
             <br>
 
             <div class="wrapper-overview2-bottom">
@@ -169,13 +169,14 @@
               <el-tab-pane v-for="detail in trailheadList" :key="detail.label" :label="detail.label">
                 <el-table
                   :data="detail.data"
+                  ref="trailheadProfileListTable"
                   fit
                   stripe
                   border
-                  height="500px">
+                  height="500px"
+                  @selection-change="handleSelection">
                   <el-table-column
-                    type="index"
-                    label="No."
+                    type="selection"
                     header-align="center"
                     align="center"
                     width="50">
@@ -242,6 +243,17 @@
                     </template>
                   </el-table-column>
                 </el-table>
+                <div style="margin-top: 20px">
+                  <el-button @click="clearTableSelection" type="warning" plain disabled>
+                    <i class="el-icon-refresh"/>
+                    <span>Clear selection</span>
+                  </el-button>
+                  <el-button @click="scrapeProfileInformation" type="primary" plain :disabled="tableSelection.length === 0">
+                    <i class="el-icon-download"/>
+                    <span v-if="tableSelection.length === trailheadList[activeTabIndex].data.length">Scrape All Profile Information</span>
+                    <span v-else>Scrape Selected Profile Information</span>
+                  </el-button>
+                </div>
               </el-tab-pane>
             </el-tabs>
           </el-card>
@@ -266,7 +278,8 @@ export default {
       overview1Info: {},
       overview2Info: {},
       overview3Info: {},
-      overview4Info: {}
+      overview4Info: {},
+      tableSelection: []
     }
   },
   created () {
@@ -280,6 +293,40 @@ export default {
     this.computeOverview4()
   },
   methods: {
+    handleSelection (val) {
+      this.tableSelection = val
+    },
+    clearTableSelection () {
+      console.log('Selection Cleared')
+      this.$refs['trailheadProfileListTable'].clearSelection()
+      this.$notify.info({
+        title: 'Info',
+        message: 'Table selection cleared.'
+      })
+    },
+    scrapeProfileInformation () {
+      this.$confirm('This may take a while. Are you sure you want to initiate scrapping procedure for all accounts?', 'Confirm', {
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel'
+      }).then(() => {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Scrapping Profile Information for all Trailhead Accounts...',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        })
+        setTimeout(() => {
+          loading.close()
+          this.$notify({
+            title: 'Success',
+            message: 'Trailhead profile successfully scraped.',
+            type: 'success'
+          })
+        }, this.tableSelection.length * 1000)
+      }).catch(() => {
+        // Do nothing
+      })
+    },
     computeOverview4 () {
       var counter = 0
       var total = 0
