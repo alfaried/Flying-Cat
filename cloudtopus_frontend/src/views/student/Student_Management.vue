@@ -28,7 +28,6 @@
                 label="Course Code"
                 header-align="center"
                 align="center"
-                width="150"
                 column-key="course_code"
                 :filters="[{text: 'IS101', value: 'IS101'}, {text: 'ESM240', value: 'ESM240'}, {text: 'MCRA380', value: 'MCRA380'}]"
                 :filter-method="filterHandler">
@@ -38,21 +37,21 @@
                 label="Section"
                 header-align="center"
                 align="center"
-                width="100">
+                width="80">
               </el-table-column>
               <el-table-column
                 property="team"
                 label="Team"
                 header-align="center"
                 align="center"
-                width="100">
+                width="80">
               </el-table-column>
               <el-table-column
                 property="name.full"
                 label="Name"
                 header-align="center"
                 align="center"
-                width="265">
+                width="230">
               </el-table-column>
               <!-- Leades to AWS Server profile page -->
               <el-table-column
@@ -60,7 +59,7 @@
                 label="Cloud Profile"
                 header-align="center"
                 align="center"
-                width="300">
+                width="200">
                 <template slot-scope="scope">
                   <el-button type="text" @click="route('server', scope.row.cloud_profile)"><u>{{ scope.row.cloud_profile }}</u></el-button>
                 </template>
@@ -70,8 +69,7 @@
                 property=""
                 label="Trailhead Profile"
                 header-align="center"
-                align="center"
-                width="250">
+                align="center">
                 <template slot-scope="scope">
                   <el-button type="text" @click="route('trailhead', scope.row.trailhead_profile)"><u>{{ scope.row.trailhead_profile }}</u></el-button>
                 </template>
@@ -82,7 +80,6 @@
                 label="Status"
                 header-align="center"
                 align="center"
-                width="150"
                 column-key="status"
                 :filters="[{text: 'Online', value: 'Online'}, {text: 'Offline', value: 'Offline'}]"
                 :filter-method="filterHandler">
@@ -106,8 +103,7 @@
                 property="action"
                 label="Action"
                 header-align="center"
-                align="center"
-                width="150">
+                align="center">
                 <template>
                   <el-button size="small" type="danger" @click="handleRemove" plain>
                     <i class="el-icon-delete"></i>

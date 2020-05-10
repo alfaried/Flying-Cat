@@ -141,28 +141,28 @@
                     label="Section"
                     header-align="center"
                     align="center"
-                    width="100">
+                    width="80">
                   </el-table-column>
                   <el-table-column
                     property="team"
                     label="Team"
                     header-align="center"
                     align="center"
-                    width="100">
+                    width="80">
                   </el-table-column>
                   <el-table-column
                     property="projectName"
                     label="Project Name"
                     header-align="center"
                     align="center"
-                    width="250">
+                    width="230">
                   </el-table-column>
                   <el-table-column
                     property="cloudProfile"
                     label="Cloud Profile"
                     header-align="center"
                     align="center"
-                    width="250">
+                    width="200">
                     <template slot-scope="scope">
                       <el-button type="text" @click="route('profile', scope.row.cloudProfile)"><u>{{ scope.row.cloudProfile }}</u></el-button>
                     </template>
@@ -171,8 +171,7 @@
                     property="applicationIP"
                     label="Application IP"
                     header-align="center"
-                    align="center"
-                    width="230">
+                    align="center">
                     <template slot-scope="scope">
                       <el-button type="text" @click="route('website', scope.row.applicationIP)"><u>{{ scope.row.applicationIP }}</u></el-button>
                     </template>
@@ -181,8 +180,7 @@
                     property="applicationStatus"
                     label="Application Status"
                     header-align="center"
-                    align="center"
-                    width="200">
+                    align="center">
                     <template slot-scope="scope">
                       <div v-if="scope.row.applicationStatus === 'Healthy'">
                         <font color="#67C23A">
@@ -202,8 +200,7 @@
                     property="applicationUsage"
                     label="Application Usage"
                     header-align="center"
-                    align="center"
-                    width="150">
+                    align="center">
                     <template slot-scope="scope">
                       {{ scope.row.applicationUsage }} %
                     </template>
@@ -213,8 +210,7 @@
                     property="action"
                     label="Action"
                     header-align="center"
-                    align="center"
-                    width="180">
+                    align="center">
                     <template slot-scope="scope">
                       <el-button size="small" type="primary" @click="route('app', scope.row.applicationIP)" plain>
                         <i class="el-icon-view"></i>
@@ -373,13 +369,9 @@ export default {
       if (location === 'app') {
         pageName = 'Application_Detail'
       } else if (location === 'website') {
-        console.log('Go to Website')
-        this.$notify({
-          title: 'Warning',
-          message: 'This is a prototype, IP address ' + params + ' does not exists.',
-          type: 'warning'
-        })
-        return null
+        var url = 'http://' + params + ':8000/'
+        window.open(url)
+        return
       }
 
       this.$activeNavBarIndex = pageUrl
