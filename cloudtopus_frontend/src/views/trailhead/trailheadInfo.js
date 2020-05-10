@@ -1,3 +1,80 @@
+const skillsList = {
+  'alfaried': [
+    {
+      name: 'General',
+      value: 34
+    },
+    {
+      name: 'CRM',
+      value: 29
+    },
+    {
+      name: 'Reporting',
+      value: 23
+    },
+    {
+      name: 'Chatter',
+      value: 3
+    },
+    {
+      name: 'App Logic',
+      value: 3
+    },
+    {
+      name: 'Integration',
+      value: 3
+    },
+    {
+      name: 'Database',
+      value: 3
+    },
+    {
+      name: 'Mobile',
+      value: 3
+    }
+  ],
+  'alfredPeng': [
+    {
+      name: 'General',
+      value: 54
+    },
+    {
+      name: 'CRM',
+      value: 26
+    },
+    {
+      name: 'Reporting',
+      value: 14
+    },
+    {
+      name: 'Database',
+      value: 6
+    }
+  ],
+  'melvinNg': [
+    {
+      name: 'General',
+      value: 44
+    },
+    {
+      name: 'CRM',
+      value: 20
+    },
+    {
+      name: 'Chatter',
+      value: 18
+    },
+    {
+      name: 'Reporting',
+      value: 12
+    },
+    {
+      name: 'Database',
+      value: 6
+    }
+  ]
+}
+
 const trailheadList = [
   {
     label: 'ESM240',
@@ -54,6 +131,15 @@ const trailheadList = [
         trailheadProfile: 'junadiTan',
         numPoints: 10200,
         numBadges: 18,
+        numTrails: 1
+      },
+      {
+        section: 'G1',
+        team: 'T2',
+        fullName: 'Billy Tay',
+        trailheadProfile: 'billyTay',
+        numPoints: 9200,
+        numBadges: 12,
         numTrails: 1
       }
     ]
@@ -216,4 +302,4 @@ const trailheadProfileList = {
   }
 }
 
-export { trailheadProfileList, trailheadList }
+export { trailheadProfileList, trailheadList, skillsList }

@@ -112,6 +112,15 @@
                     </el-form-item>
                   </el-col>
                 </el-row>
+
+                <el-row>
+                  <el-col :span="24">
+                    <el-button class="card-button" @click="scrapeProfileInformation" type="primary" plain>
+                      <i class="el-icon-download"/>
+                      <span>Scrape Profile Information</span>
+                    </el-button>
+                  </el-col>
+                </el-row>
               </el-form>
             </div>
           </el-card>
@@ -121,11 +130,11 @@
           <el-card shadow="hover" class="inner-card">
             <div class="card-header" slot="header">
               <i class="el-icon-star-on"></i>
-              <span>Skills</span>
+              <span>{{ numOfSkills }} Skills</span>
             </div>
 
             <div class="card-body">
-              TO-DO:  echart
+              <PieChart :profile="trailheadProfile" ref="PieChart"/>
             </div>
           </el-card>
         </el-col>
@@ -135,14 +144,19 @@
 </template>
 
 <script>
-import { trailheadProfileList } from '../trailhead/trailheadInfo.js'
+import { trailheadProfileList, skillsList } from '../trailhead/trailheadInfo.js'
+import PieChart from './PieChart'
 
 export default {
   name: 'Trailhead_Profile',
+  components: {
+    PieChart
+  },
   data () {
     return {
       trailheadProfile: '',
-      trailheadPorfileInfo: {}
+      trailheadPorfileInfo: {},
+      numOfSkills: 0
     }
   },
   created () {
@@ -150,8 +164,25 @@ export default {
     this.fetchData()
   },
   methods: {
+    scrapeProfileInformation () {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Scrapping Information for Trailhead Profile...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
+      setTimeout(() => {
+        loading.close()
+        this.$notify({
+          title: 'Success',
+          message: 'Trailhead profile successfully scraped.',
+          type: 'success'
+        })
+      }, 1000)
+    },
     fetchData () {
       this.trailheadPorfileInfo = trailheadProfileList[this.trailheadProfile]
+      this.numOfSkills = skillsList[this.trailheadProfile].length
     },
     route (location, params) {
       if (location === 'website') {
@@ -185,5 +216,9 @@ export default {
 }
 .overview-info:hover {
   color: #E6A23C;
+}
+.card-button {
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 </style>
