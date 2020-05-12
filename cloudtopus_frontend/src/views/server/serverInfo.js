@@ -1,3 +1,24 @@
+const applicationInfoList = {
+  '13.228.95.141': [
+    {
+      id: 'i-02901c2e26147bd43',
+      health: 'Healthy',
+      cpuUtilization: 0.8,
+      networkIN: 525,
+      networkOUT: 1152,
+      instanceID: 'i-02901c2e26147bd43',
+      instanceName: 'Flying_Cat',
+      instanceType: 't2.micro',
+      instanceState: 'running',
+      region: 'Singapore',
+      availabilityZone: 'ap-southeast-1c',
+      privateIP: '172.31.1.184',
+      privateDNS: 'ip-172-31-1-184.ap-southeast-1.compute.internal',
+      loadBalance: 'No'
+    }
+  ]
+}
+
 const serviceInfoList = {
   'i-02901c2e26147bd43': {
     name: 'Flying_Cat',
@@ -218,7 +239,7 @@ const serverList = [{
       cloudProfile: 'AWS-233703087823',
       applicationIP: '13.228.95.141',
       applicationStatus: 'Healthy',
-      applicationUsage: 2
+      applicationUsage: 0.8
     },
     {
       section: 'G1',
@@ -304,4 +325,4 @@ const serverList = [{
   ]
 }]
 
-export { serverList, cloudProfileData, serviceInfoList }
+export { serverList, cloudProfileData, serviceInfoList, applicationInfoList }
