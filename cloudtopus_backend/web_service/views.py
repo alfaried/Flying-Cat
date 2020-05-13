@@ -5,6 +5,9 @@ from web_service.src.aws_utilities import *
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
+import socket 
+import time
+
 # Create your views here.
 def index(requests):
   response = {'service_name': 'index'}
@@ -15,7 +18,8 @@ def index(requests):
     'describe_instance_status': 'describe_instance_status/',
     'start_instance': 'start_instance/',
     'stop_instance': 'stop_instance/',
-    'get_ec2_metric_statistics': 'get_ec2_metric_statistics/'
+    'get_ec2_metric_statistics': 'get_ec2_metric_statistics/',
+    'get_application_status': 'get_application_status/'
   }
 
   return JsonResponse(response, safe=True)
@@ -103,9 +107,34 @@ def stop_instance(requests):
 
   return JsonResponse(response, safe=True)
 
+
+def get_application_status(requests):
+  response = {'Service_Name': 'get_application_status'}
+
+  application_ip = requests.GET.get('application_ip')
+  port_number = requests.GET.get('port_number')
+
+  s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  res = True
+  try:
+    s.settimeout(1)
+    s.connect((application_ip, int(port_number)))
+    s.shutdown(1)
+  except:
+    time.sleep(1)
+    res = False
+  finally:
+    s.close()
+
+  response['Content'] = 'Healthy' if res else 'Down'
+
+  return JsonResponse(response, safe=True)
+
+
 def testing(requests):
   response = {'Service_Name': 'testing'}
 
   # Add code below for testing
+
 
   return JsonResponse(response, safe=True)

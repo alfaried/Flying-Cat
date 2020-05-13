@@ -195,7 +195,7 @@ export default {
 
     setTimeout(() => {
       loading.close()
-    }, 1000)
+    }, 2500)
   },
   methods: {
     handleTabClick (clickedTab) {
@@ -219,7 +219,8 @@ export default {
           this.fetchMetricsData('CPUUtilization', 'Percent')
           this.fetchMetricsData('NetworkIn', 'Bytes')
           this.fetchMetricsData('NetworkOut', 'Bytes')
-          this.fetchStatusData()
+          this.fetchInstanceState()
+          this.overviewInfo.serverHealth = 'Down'
 
           setTimeout(() => {
             loading.close()
@@ -256,8 +257,9 @@ export default {
       this.fetchApplicationStatus()
     },
     fetchApplicationStatus () {
-      // var url = 'http://' + this.applicationIP + ':8000/'
-      this.overviewInfo.serverHealth = 'Healthy'
+      this.$http.get('http://localhost:8000/api/get_application_status/?application_ip=' + this.applicationIP + '&port_number=8000').then(response => {
+        this.overviewInfo.serverHealth = response.data.Content
+      })
     },
     fetchInstanceState () {
       this.$http.get('http://localhost:8000/api/describe_instance_status/?instance_id=' + this.serverInfoForm.instanceID).then(response => {

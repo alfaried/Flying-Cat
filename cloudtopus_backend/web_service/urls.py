@@ -10,4 +10,5 @@ urlpatterns = [
     path('start_instance/', views.start_instance, name='start_instance'),
     path('stop_instance/', views.stop_instance, name='stop_instance'),
     path('get_ec2_metric_statistics/', views.get_ec2_metric_statistics, name='get_ec2_metric_statistics'),
+    path('get_application_status/', views.get_application_status, name='get_application_status'),
 ]
