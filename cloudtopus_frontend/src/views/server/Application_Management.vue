@@ -31,44 +31,25 @@
         </el-col>
 
         <el-col :span="6">
-          <el-card shadow="hover" class="inner-card overview-info">
-            <el-row class="overview-1-row">
-              <el-row class="overview-1-header">
-                <i class="el-icon-s-platform"/>
-                <strong>{{ overview1Info.totalApps }}</strong>
-              </el-row>
-
-              <el-row class="overview-1-body">
-                <strong>Deployed Apps</strong>
-              </el-row>
+          <el-card shadow="hover" class="inner-card overview-info wrapper-padding-2">
+            <el-row class="overview-3-header healthy-color">
+              <i class="el-icon-success"/>
+              <strong>{{ overview1Info.healthyApps }}</strong>
             </el-row>
-            <br>
-            <el-row>
-              <el-card shadow="never">
-                <el-row>
-                  <el-col :span="12">
-                    <el-row class="overview-1-sub-header healthy-color">
-                      <i class="el-icon-success"/>
-                      <strong>{{ overview1Info.healthyApps }}</strong>
-                    </el-row>
+            <el-row class="overview-3-body">
+              <strong>Healthy Apps</strong>
+            </el-row>
+          </el-card>
+        </el-col>
 
-                    <el-row class="overview-1-sub-body healthy-color">
-                      <strong>Healthy</strong>
-                    </el-row>
-                  </el-col>
-
-                  <el-col :span="12">
-                    <el-row class="overview-1-sub-header down-color">
-                      <i class="el-icon-error"/>
-                      <strong>{{ overview1Info.downApps }}</strong>
-                    </el-row>
-
-                    <el-row class="overview-1-sub-body down-color">
-                      <strong>Down</strong>
-                    </el-row>
-                  </el-col>
-                </el-row>
-              </el-card>
+        <el-col :span="6">
+          <el-card shadow="hover" class="inner-card overview-info wrapper-padding-2">
+            <el-row class="overview-3-header down-color">
+              <i class="el-icon-error"/>
+              <strong>{{ overview1Info.downApps }}</strong>
+            </el-row>
+            <el-row class="overview-3-body">
+              <strong>Down Apps</strong>
             </el-row>
           </el-card>
         </el-col>
@@ -101,17 +82,6 @@
                     </el-col>
                 </el-row>
               </el-card>
-            </el-row>
-          </el-card>
-        </el-col>
-
-        <el-col :span="6">
-          <el-card shadow="hover" class="inner-card overview-info">
-            <el-row class="overview-3-header">
-              {{ overview3Info.averagelUsageAmount }} %
-            </el-row>
-            <el-row class="overview-body">
-              <strong>Average Application Usage</strong>
             </el-row>
           </el-card>
         </el-col>
@@ -408,24 +378,30 @@ export default {
 .overview-1-sub-body {
   font-size: 18px;
 }
-.healthy-color {
-  color: #67C23A;
-}
-.down-color {
-  color: #F56C6C;
-}
 .overview-3-header {
   font-size: 80px;
-  font-weight: bolder;
   color: #606266;
-  padding-top: 57px;
-  padding-bottom: 57px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.overview-3-body {
+  font-size: 30px;
 }
 .overview-body {
   font-size: 20px;
 }
 .wrapper-padding {
   padding-top: 18px;
-  padding-bottom: 18px;
+  padding-bottom: 17px;
+}
+.wrapper-padding-2 {
+  padding-top: 10px;
+  padding-bottom: 42px;
+}
+.healthy-color {
+  color: #67C23A;
+}
+.down-color {
+  color: #F56C6C;
 }
 </style>
