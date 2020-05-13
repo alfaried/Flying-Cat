@@ -26,7 +26,8 @@ SECRET_KEY = 'em%n&z-f!(w^is#i0%-976_&%63-mr%7&l()71xwrmjj)ez1zm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '54.169.79.36'
+    '54.169.79.36',
+    'localhost'
 ]
 
 
@@ -41,9 +42,11 @@ INSTALLED_APPS = [
     'livesync',
     'django.contrib.staticfiles',
     'web_service',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,3 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# CORS
+# http://www.srikanthtechnologies.com/blog/python/enable_cors_for_django.aspx
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+)
