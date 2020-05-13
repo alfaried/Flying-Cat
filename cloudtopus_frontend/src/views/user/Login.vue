@@ -73,7 +73,7 @@ export default {
           if (this.loginForm.username === 'admin' && this.loginForm.password === 'admin') {
             setTimeout(() => {
               loading.close()
-            }, 2000)
+            }, 1500)
             this.$showNavBar = true
             this.$activeNavBarIndex = '/overview'
 
