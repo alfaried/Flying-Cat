@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import Introcution from '@/views/intro/Introduction'
+
 import Login from '@/views/user/Login'
 import Overview from '@/views/home/Overview'
 import Profile from '@/views/user/Profile'
@@ -25,6 +28,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Introduction',
+      component: Introcution
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
     },

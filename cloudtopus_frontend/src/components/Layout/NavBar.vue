@@ -104,7 +104,7 @@ export default {
         document.body.style.backgroundSize = 'cover'
 
         this.$router.push({
-          path: '/'
+          path: '/login'
         })
       } else {
         this.$activeNavBarIndex = key
