@@ -14,7 +14,7 @@
           </el-button>
         </el-col>
         <el-col :span="12">
-          <el-button style="float: right;" type="primary" @click="route('website', applicationIP)" plain>
+          <el-button style="float: right;" type="primary" @click="route('website', applicationIP)" plain :disabled="overviewInfo.serverHealth === 'Down'">
             <span>Go to Deployed Application Website</span>
             <i class="el-icon-right"/>
           </el-button>
@@ -42,7 +42,7 @@
         <el-col :span="6">
           <el-card shadow="hover" class="inner-card overview-info">
             <el-row class="overview-header">
-              <strong>{{overviewInfo.cpuUtilization }} %</strong>
+              <strong>{{ overviewInfo.cpuUtilization }} %</strong>
             </el-row>
             <br>
             <el-row class="overview-body">
@@ -144,7 +144,7 @@
                       </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                      <el-button @click="stopInstance" type="danger" style="margin-top: 50px; float: right;" plain>
+                      <el-button @click="stopInstance" type="danger" style="margin-top: 50px; float: right;" plain :disabled="overviewInfo.serverHealth === 'Down'">
                         <i class="el-icon-warning-outline"/>
                         <span>Stop Instance</span>
                       </el-button>
@@ -170,14 +170,32 @@ export default {
       applicationIP: '',
       activeTabIndex: 0,
       applicationInfoList: {},
-      overviewInfo: {},
-      serverInfoForm: {}
+      serverInfoForm: {
+        instanceState: ''
+      },
+      overviewInfo: {
+        serverHealth: '',
+        cpuUtilization: 0,
+        networkIN: 0,
+        networkOUT: 0
+      }
     }
   },
   created () {
+    const loading = this.$loading({
+      lock: true,
+      text: 'Retrieving Application Data...',
+      spinner: 'el-icon-loading',
+      background: 'rgba(0, 0, 0, 0.7)'
+    })
+
     this.applicationIP = this.$route.params.applicationIP
     this.applicationInfoList = applicationInfoList[this.applicationIP]
     this.fetchData()
+
+    setTimeout(() => {
+      loading.close()
+    }, 1000)
   },
   methods: {
     handleTabClick (clickedTab) {
@@ -190,21 +208,28 @@ export default {
         cancelButtonText: 'Cancel',
         dangerouslyUseHTMLString: true
       }).then(() => {
-        this.$notify({
-          title: 'Warning',
-          message: 'This is a prototype, instance selected does not exists.',
-          type: 'warning'
+        const loading = this.$loading({
+          lock: true,
+          text: 'Stopping instance...',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
         })
 
-        // TO-DO: Implement API
-        // const loading = this.$loading({
-        //   lock: true,
-        //   text: 'Stopping instance...',
-        //   spinner: 'el-icon-loading',
-        //   background: 'rgba(0, 0, 0, 0.7)'
-        // })
+        this.$http.get('http://localhost:8000/api/stop_instance/?instance_id=' + this.serverInfoForm.instanceID).then(response => {
+          this.fetchMetricsData('CPUUtilization', 'Percent')
+          this.fetchMetricsData('NetworkIn', 'Bytes')
+          this.fetchMetricsData('NetworkOut', 'Bytes')
+          this.fetchStatusData()
 
-        // loading.close()
+          setTimeout(() => {
+            loading.close()
+            this.$notify({
+              title: 'Warning',
+              message: 'Instance stopped successfully',
+              type: 'success'
+            })
+          }, 1000)
+        })
       }).catch(() => {
         // Do nothing
       })
@@ -212,22 +237,47 @@ export default {
     fetchData () {
       var serverInfo = this.applicationInfoList[this.activeTabIndex]
 
-      // Overview Info
-      this.overviewInfo.serverHealth = serverInfo.health
-      this.overviewInfo.cpuUtilization = serverInfo.cpuUtilization
-      this.overviewInfo.networkIN = serverInfo.networkIN
-      this.overviewInfo.networkOUT = serverInfo.networkOUT
-
       // For Info
       this.serverInfoForm.instanceID = serverInfo.instanceID
       this.serverInfoForm.instanceName = serverInfo.instanceName
       this.serverInfoForm.instanceType = serverInfo.instanceType
-      this.serverInfoForm.instanceState = serverInfo.instanceState
+      // this.serverInfoForm.instanceState = serverInfo.instanceState
       this.serverInfoForm.region = serverInfo.region
       this.serverInfoForm.availabilityZone = serverInfo.availabilityZone
       this.serverInfoForm.privateIP = serverInfo.privateIP
       this.serverInfoForm.privateDNS = serverInfo.privateDNS
       this.serverInfoForm.loadBalance = serverInfo.loadBalance
+
+      this.fetchMetricsData('CPUUtilization', 'Percent')
+      this.fetchMetricsData('NetworkIn', 'Bytes')
+      this.fetchMetricsData('NetworkOut', 'Bytes')
+
+      this.fetchInstanceState()
+      this.fetchApplicationStatus()
+    },
+    fetchApplicationStatus () {
+      // var url = 'http://' + this.applicationIP + ':8000/'
+      this.overviewInfo.serverHealth = 'Healthy'
+    },
+    fetchInstanceState () {
+      this.$http.get('http://localhost:8000/api/describe_instance_status/?instance_id=' + this.serverInfoForm.instanceID).then(response => {
+        var instanceStatuses = response.data.Content.InstanceStatuses
+        if (instanceStatuses.length === 0) {
+          this.serverInfoForm.instanceState = 'stopped'
+        } else {
+          this.serverInfoForm.instanceState = instanceStatuses[0].InstanceState.Name
+        }
+      })
+    },
+    fetchMetricsData (metricName, unit) {
+      this.$http.get('http://localhost:8000/api/get_ec2_metric_statistics/?instance_id=' + this.serverInfoForm.instanceID + '&metric_name=' + metricName + '&unit=' + unit).then(response => {
+        var datapoints = response.data.Content.Datapoints
+        if (datapoints.length > 0) {
+          if (metricName === 'CPUUtilization') { this.overviewInfo.cpuUtilization = (datapoints[datapoints.length - 1].Average).toFixed(3) }
+          if (metricName === 'NetworkIn') { this.overviewInfo.networkIN = parseInt(datapoints[datapoints.length - 1].Average) }
+          if (metricName === 'NetworkOut') { this.overviewInfo.networkOUT = parseInt(datapoints[datapoints.length - 1].Average) }
+        }
+      })
     },
     route (location, params) {
       if (location === 'website') {
