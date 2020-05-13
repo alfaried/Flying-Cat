@@ -1,5 +1,6 @@
 <template>
   <div class="Introduction">
+    <el-image :src="logo" class="middle-image"></el-image>
     <el-card class="middle">
       <el-row :gutter="20" style="padding-bottom: 20px;">
         <el-col :span="24">
@@ -86,6 +87,7 @@
               <el-button v-if="showCloudtopus === false" style="float: right; padding: 5px;" plain round @click="accordian('cloudtopus', 'open')">
                 <i class="el-icon-arrow-right"></i>
               </el-button>
+              <el-button style="float: right; padding: 3px 0; padding-right: 10px;" type="text" @click="route('website', www.cloudtopus.com)">www.cloudtopus.com</el-button>
             </div>
 
             <div v-show="showCloudtopus" class="card-body">
@@ -178,7 +180,6 @@
         </el-col>
       </el-row>
     </el-card>
-
   </div>
 </template>
 
@@ -187,6 +188,7 @@ import image from '@/assets/New_Lands.jpg'
 import avatar from '@/assets/Rafael.jpeg'
 import vue from '@/assets/logo.png'
 import python from '@/assets/python.png'
+import logo from '@/assets/Cloudtopus-V1-Black.png'
 
 export default {
   name: 'Introduction',
@@ -198,7 +200,8 @@ export default {
       showApplication: false,
       showCloudtopus: false,
       imageRafael: '',
-      technologyImage: []
+      technologyImage: [],
+      logo: ''
     }
   },
   created () {
@@ -207,6 +210,7 @@ export default {
     this.imageRafael = avatar
     this.technologyImage.push(vue)
     this.technologyImage.push(python)
+    this.logo = logo
   },
   methods: {
     accordian (cardName, status) {
@@ -266,6 +270,9 @@ export default {
         this.$router.push(
           { path: '/login' }
         )
+      } else if (location === 'website') {
+        var url = params
+        window.open(url)
       }
     }
   }
@@ -274,27 +281,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* .middle {
-  height: 10px;
-  width: 20px;
+.middle-image {
+  height: 300px;
+  width: 600px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -5px -10px;
+  margin: -150px -300px;
+}
+.middle {
+  height: 200px;
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -100px -200px;
   border-radius: 25px;
+  opacity: 0;
 }
 .middle:hover {
   height: 850px;
   width: 1600px;
   margin: -425px -800px;
-} */
+  opacity: 100;
+}
 p {
   font-size: 20px;
   line-height: 35px;
   /* display: flex;
   justify-content: space-between; */
 }
-.middle {
+/* .middle {
   height: 850px;
   width: 1600px;
   margin: -425px -800px;
@@ -302,7 +319,7 @@ p {
   left: 50%;
   top: 50%;
   border-radius: 25px;
-}
+} */
 .image-cropper {
   width: 200px;
   height: 200px;
