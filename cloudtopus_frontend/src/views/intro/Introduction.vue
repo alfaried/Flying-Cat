@@ -87,7 +87,7 @@
               <el-button v-if="showCloudtopus === false" style="float: right; padding: 5px;" plain round @click="accordian('cloudtopus', 'open')">
                 <i class="el-icon-arrow-right"></i>
               </el-button>
-              <el-button style="float: right; padding: 3px 0; padding-right: 10px;" type="text" @click="route('website', www.cloudtopus.com)">www.cloudtopus.com</el-button>
+              <el-button style="float: right; padding: 3px 0; padding-right: 10px;" type="text" @click="route('website', 'www.cloudtopus.com')">www.cloudtopus.com</el-button>
             </div>
 
             <div v-show="showCloudtopus" class="card-body">
@@ -271,7 +271,7 @@ export default {
           { path: '/login' }
         )
       } else if (location === 'website') {
-        var url = params
+        var url = 'http://' + params
         window.open(url)
       }
     }
