@@ -75,11 +75,11 @@ export default {
       this.chart = echarts.init(this.$el, 'macarons')
       this.chart.setOption({
         title: {
-          text: this.totalCount,
+          text: this.totalCount + ' Enrolled',
           textStyle: {
             color: '#606266',
             fontWeight: 'bold',
-            fontSize: 40
+            fontSize: 21
           },
           left: 'center',
           top: 'middle'
