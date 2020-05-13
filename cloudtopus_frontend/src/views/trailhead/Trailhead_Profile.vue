@@ -130,7 +130,7 @@
           <el-card shadow="hover" class="inner-card">
             <div class="card-header" slot="header">
               <i class="el-icon-star-on"></i>
-              <span>{{ numOfSkills }} Skills</span>
+              <span>Skill Set</span>
             </div>
 
             <div class="card-body">

@@ -47,6 +47,16 @@ export default {
       var dataset = skillsList[this.profile]
       this.chart = echarts.init(this.$el, 'macarons')
       this.chart.setOption({
+        title: {
+          text: skillsList[this.profile].length + ' Skills',
+          textStyle: {
+            color: '#606266',
+            fontWeight: 'bold',
+            fontSize: 25
+          },
+          left: 'center',
+          top: 'middle'
+        },
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
