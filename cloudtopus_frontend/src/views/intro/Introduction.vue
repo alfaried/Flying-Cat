@@ -20,7 +20,7 @@
                 <el-col :span="24">
                   <p>
                     This presentation demo is based off a previous work done during my Final Year Project.
-                    It was initially created within a span of <strong>3 to 4 months</strong>, by a <strong>team of 5</strong> who called themselves <strong>Thunderhead Monkeys</strong>, paying homage to Netflix's Chaos Monkey
+                    It was initially created within a span of <strong>3 to 4 months</strong>, by a <strong>team of 5</strong> who called themselves <strong style="color: #E6A23C;">Thunderhead Monkeys</strong>, paying homage to Netflix's Chaos Monkey
                     <em> (a program which randomly terminates instances during production to ensure that engineers implement their services to be resilient to instance failures)</em>.
                   </p>
 
@@ -59,7 +59,7 @@
                 </el-col>
                 <el-col :span="20">
                   <p>
-                    So, this was our real life client, <strong>Professor Rafael J. Barros</strong>, a senior lecturer at <strong>Singapore Management University (SMU)</strong>.
+                    So, this was our real life client, Professor <strong style="color: #67C23A;"> Rafael J. Barros</strong>, a senior lecturer at <strong>Singapore Management University (SMU)</strong>.
                     He introduced this particular project for the pupose of assisting him (initially) and his fellow instructors, to facilitate learning within his modules, specifically <strong>Enterprise Solution Management (ESM)</strong>.
                   </p>
 
@@ -92,7 +92,7 @@
               <el-row>
                 <el-col :span="24">
                   <p>
-                    This is where the Cloud Learning Environment comes in, or as I like to call it, <strong>Cloudtopus</strong>.
+                    This is where the Cloud Learning Environment comes in, or as I like to call it, <strong style="color: #409EFF;">Cloudtopus</strong>.
                     Apart from the basic management function of students and courses, it's able to integrate and manage cloud servers such as those hosted on <strong>AWS</strong> and specific external digital learning tools such as <strong>Trailhead</strong> by Salesforce.
                     Just for context, our client uses Trailhead to reinforce the learning of the aforementioned concepts that were done in class.
                     Just like <strong>Udemy</strong> or <strong>DataCamp</strong>, users are greeted with quizzes after learning the content and upon completion will garner them points.
